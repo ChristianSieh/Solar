@@ -141,20 +141,20 @@ void Animate( void )
     glLoadIdentity();
 
     // Back off eight units to be able to view from the origin.
-    glTranslatef ( 0.0, 0.0, -8.0 );
+    glTranslatef ( 0.0, 0.0, -16.0 );
 
     // Rotate the plane of the elliptic
     // (rotate the model's plane about the x axis by fifteen degrees)
-    glRotatef( 15.0, 1.0, 0.0, 0.0 );
+    glRotatef( 90.0, 1.0, 0.0, 0.0 );
 
     // Draw the sun	-- as a yellow, wireframe sphere
     glColor3f( 1.0, 1.0, 0.0 );
-    glutWireSphere( 1.0, 15, 15 );
+    glutWireSphere( 1.0, 15, 15 ); //radius , slices, stacks
 
     // Draw the Earth
     // First position it around the sun. Use DayOfYear to determine its position.
     glRotatef( 360.0 * DayOfYear / 365.0, 0.0, 1.0, 0.0 );
-    glTranslatef( 4.0, 0.0, 0.0 );
+    glTranslatef( 8.0, 0.0, 0.0 );
     glPushMatrix();						// Save matrix state
     // Second, rotate the earth on its axis. Use HourOfDay to determine its rotation.
     glRotatef( 360.0 * HourOfDay / 24.0, 0.0, 1.0, 0.0 );

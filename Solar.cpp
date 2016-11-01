@@ -35,6 +35,8 @@
 #include <cstdlib>
 #include <GL/freeglut.h>
 
+#include "Gen.h"
+
 // function prototypes
 void OpenGLInit( void );
 void Animate( void );
@@ -220,6 +222,9 @@ int main( int argc, char** argv )
     glutInitWindowPosition( 0, 0 );
     glutInitWindowSize( 600, 360 );
     glutCreateWindow( "Solar System Demo" );
+
+
+    generate();
 
     // Initialize OpenGL.
     OpenGLInit();

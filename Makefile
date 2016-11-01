@@ -36,7 +36,7 @@ GL_LIBS = -lglut -lGLU -lGL -lm
 all:    Solar
 
 # specific targets
-Solar:	Solar.o
+Solar:	Solar.o Shape.o Orb.o Planet.o Gen.o
 	$(LINK) -o $@ $^ $(GL_LIBS)
 
 # generic C and C++ targets for OpenGL programs consisting of only one file

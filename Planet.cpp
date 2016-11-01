@@ -17,20 +17,16 @@ Planet::~Planet()
 {
 }
 
-void Shape::printDate()
+void Planet::drawWireFrame()
 {
-    cerr << "Planet: " << name << " has the current date of: \n" ;
-    cerr << "\t Day: " << currday << "/" << totalDay << endl;
-    cerr << "\t Year: " << currYear << "/" << totalYear << end;
 }
 
-void Shape::printRadius()
+void Planet::drawSolid()
 {
-    cerr << "Planet: " << name << " has a radius of: " << radius << endl;
 }
 
-void Shape::printDistance()
+void Planet::drawImg()
 {
-    cerr << "Planet: " << name << " has a distance of: " << distance << endl;
 }
+
 
