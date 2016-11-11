@@ -6,15 +6,6 @@
 #include <iostream>
 using namespace std;
 
-
-const float White[]   = { 1.0, 1.0, 1.0 };
-const float Yellow[]  = { 1.0, 1.0, 0.0 };
-const float Red[]     = { 1.0, 0.0, 0.0 };
-const float Green[]   = { 0.0, 1.0, 0.0 };
-const float Blue[]    = { 0.0, 0.0, 1.0 };
-const float Magenta[] = { 1.0, 0.0, 1.0 };
-const float Cyan[]    = { 0.0, 1.0, 1.0 };
-
 class Shape
 {
     protected:
@@ -35,7 +26,6 @@ class Shape
 	virtual void drawImg() const = 0;
 	virtual void printAll() const = 0;
 	virtual void printDate() const = 0;
-	virtual void printRadius() const = 0;
 	virtual void printDistance() const = 0;
 };
 

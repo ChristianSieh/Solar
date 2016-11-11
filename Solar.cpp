@@ -34,8 +34,13 @@
 
 #include <cstdlib>
 #include <GL/freeglut.h>
+#include <vector>
 
 #include "Gen.h"
+
+//shape classes
+#include "Shape.h"
+#include "Orb.h"
 
 // function prototypes
 void OpenGLInit( void );
@@ -51,6 +56,7 @@ void SpecialKeyFunc( int Key, int x, int y );
 // global variables
 GLenum spinMode = GL_TRUE;
 GLenum singleStep = GL_FALSE;
+vector<Shape*> shapeList;
 
 // these three variables control the animation's state and speed.
 float HourOfDay = 0.0;
@@ -149,6 +155,10 @@ void Animate( void )
     // (rotate the model's plane about the x axis by fifteen degrees)
     glRotatef( 15.0, 1.0, 0.0, 0.0 );
 
+    for(auto & obj: shapeList)
+	obj->drawWireFrame();
+
+/*
     // Draw the sun	-- as a yellow, wireframe sphere
     glColor3f( 1.0, 1.0, 0.0 );
     glutWireSphere( 1.0, 15, 15 );
@@ -170,7 +180,7 @@ void Animate( void )
     glTranslatef( 0.7, 0.0, 0.0 );
     glColor3f( 0.3, 0.7, 0.3 );
     glutWireSphere( 0.1, 5, 5 );
-
+*/
     // Flush the pipeline, and swap the buffers
     glFlush();
     glutSwapBuffers();
@@ -224,7 +234,11 @@ int main( int argc, char** argv )
     glutCreateWindow( "Solar System Demo" );
 
 
-    generate();
+    Orb sun;
+    sun.printAll();
+    shapeList.push_back(new Orb(1.0, 0.0, 1.0, 1.0, "sun", "none" ) );
+    shapeList.push_back(new Orb(0.4, 4.0, 1.0, 1.0, "earth", "none") );
+    //generate();
 
     // Initialize OpenGL.
     OpenGLInit();

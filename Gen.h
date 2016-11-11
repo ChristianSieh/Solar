@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <fstream>
 #include <iostream>
+#include "ShapeClasses/Shape.h"
+
 using namespace std;
 
 void generate();

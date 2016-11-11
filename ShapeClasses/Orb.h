@@ -17,13 +17,13 @@ class Orb : public Shape
 	//constructor 
 	Orb( float r = 0.0, float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null");
 	~Orb();
-	void drawWireFrame() const;
-	void drawSolid() const;
-	void drawImg() const;
-        void printAll() const;
-	void printDate() const;
-	void printRadius() const;
-	void printDistance() const;
+	void drawWireFrame();
+	void drawSolid();
+	void drawImg();
+        void printAll();
+	void printDate();
+	void printRadius();
+	void printDistance();
 };
 
 
