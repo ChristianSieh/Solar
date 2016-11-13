@@ -1,52 +1,37 @@
-# Makefile for OpenGL/GLUT programs.
-
-# Author: John M. Weiss, Ph.D.
-# Written Fall 2016 for CSC433/533 Computer Graphics.
-
-# Usage:  make target1 target2 ...
-
-#-----------------------------------------------------------------------
-
-# GNU C/C++ compiler and linker:
-CC = gcc
-CXX = g++
-LINK = g++
-
-# Turn on optimization and warnings (add -g for debugging with gdb):
-# CPPFLAGS = 		# preprocessor flags
-CFLAGS = -O -Wall
-CXXFLAGS = -O -Wall -std=c++11
-
-# OpenGL/Mesa libraries for Linux:
+CC        := g++
+LD        := g++
+CXXFLAGS = -O -Wall -std=c++11 -g
 GL_LIBS = -lglut -lGLU -lGL -lm
 
-# OpenGL libraries for Windows (MinGW):
-# GL_LIBS = -lfreeglut -lglu32 -lopengl32
-# GL_LIBS = -lglut32 -lglu32 -lopengl32
+MODULES   := Main Shape
+SRC_DIR   := $(addprefix src/,$(MODULES))
+BUILD_DIR := $(addprefix build/,$(MODULES))
 
-# OpenGL libraries for Windows (MSVS):
-# GL_LIBS = opengl32.lib glu32.lib freeglut.lib
-# GL_LIBS = opengl32.lib glu32.lib glut32.lib
+SRC       := $(foreach sdir,$(SRC_DIR),$(wildcard $(sdir)/*.cpp))
+OBJ       := $(patsubst src/%.cpp,build/%.o,$(SRC))
+INCLUDES  := $(addprefix -I,$(SRC_DIR))
 
-#-----------------------------------------------------------------------
+vpath %.cpp $(SRC_DIR)
 
-# MAKE allows the use of "wildcards", to make writing compilation instructions
-# a bit easier. GNU make uses $@ for the target and $^ for the dependencies.
+define make-goal
+$1/%.o: %.cpp
+	$(CC) $(INCLUDES) -c $$< -o $$@
+endef
 
-all:    Solar
+.PHONY: all checkdirs clean
 
-# specific targets
-Solar:	Solar.o Shape.o Orb.o Planet.o Gen.o
-	$(LINK) -o $@ $^ $(GL_LIBS)
+all: checkdirs build/Solar
 
-# generic C and C++ targets for OpenGL programs consisting of only one file
-# type "make filename" (no extension) to build
-.c:
-	$(CC) -o $@ $@.c $(CFLAGS) $(GL_LIBS)
+build/Solar: $(OBJ)
+	$(LD) $^ -o $@ $(GL_LIBS) $(CXXFLAGS)
 
-.cpp:
-	$(CXX) -o $@ $@.cpp $(CXXFLAGS) $(GL_LIBS)
 
-# utility targets
+checkdirs: $(BUILD_DIR)
+
+$(BUILD_DIR):
+	@mkdir -p $@
+
 clean:
-	rm -f *.o *~ core
+	@rm -rf $(BUILD_DIR)
+
+$(foreach bdir,$(BUILD_DIR),$(eval $(call make-goal,$(bdir))))

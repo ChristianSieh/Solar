@@ -145,7 +145,7 @@ void Animate( void )
 
     // Rotate the plane of the elliptic
     // (rotate the model's plane about the x axis by fifteen degrees)
-    glRotatef( 15.0, 1.0, 0.0, 0.0 );
+    glRotatef( 0.0, 1.0, 0.0, 0.0 );
 
     // Draw the sun	-- as a yellow, wireframe sphere
     glColor3f( 1.0, 1.0, 0.0 );

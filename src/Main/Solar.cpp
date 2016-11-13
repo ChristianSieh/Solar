@@ -39,8 +39,10 @@
 #include "Gen.h"
 
 //shape classes
-#include "Shape.h"
-#include "Orb.h"
+#include "../Shape/Shape.h"
+#include "../Shape/Orb.h"
+#include "../Shape/Sun.h"
+#include "../Shape/Planet.h"
 
 // function prototypes
 void OpenGLInit( void );
@@ -153,34 +155,11 @@ void Animate( void )
 
     // Rotate the plane of the elliptic
     // (rotate the model's plane about the x axis by fifteen degrees)
-    glRotatef( 90.0, 0.0, 0.0, 0.0 );
+    glRotatef( 90.0, 1.0, 0.0, 0.0 );
 
     for(auto & obj: shapeList)
 	obj->drawWireFrame();
 
-/*
-    // Draw the sun	-- as a yellow, wireframe sphere
-    glColor3f( 1.0, 1.0, 0.0 );
-    glutWireSphere( 1.0, 15, 15 );
-
-    // Draw the Earth
-    // First position it around the sun. Use DayOfYear to determine its position.
-    glRotatef( 360.0 * DayOfYear / 365.0, 0.0, 1.0, 0.0 );
-    glTranslatef( 4.0, 0.0, 0.0 );
-    glPushMatrix();						// Save matrix state
-    // Second, rotate the earth on its axis. Use HourOfDay to determine its rotation.
-    glRotatef( 360.0 * HourOfDay / 24.0, 0.0, 1.0, 0.0 );
-    // Third, draw the earth as a wireframe sphere.
-    glColor3f( 0.2, 0.2, 1.0 );
-    glutWireSphere( 0.4, 10, 10 );
-    glPopMatrix();						// Restore matrix state
-
-    // Draw the moon. Use DayOfYear to control its rotation around the earth
-    glRotatef( 360.0 * 12.0 * DayOfYear / 365.0, 0.0, 1.0, 0.0 );
-    glTranslatef( 0.7, 0.0, 0.0 );
-    glColor3f( 0.3, 0.7, 0.3 );
-    glutWireSphere( 0.1, 5, 5 );
-*/
     // Flush the pipeline, and swap the buffers
     glFlush();
     glutSwapBuffers();
@@ -234,8 +213,8 @@ int main( int argc, char** argv )
     glutCreateWindow( "Solar System Demo" );
 
 
-    shapeList.push_back(new Orb(1.0, 0.0, 1.0, 1.0, "sun", "none" ) );
-    shapeList.push_back(new Orb(0.4, 2.0, 1.0, 1.0, "earth", "none") );
+    shapeList.push_back(new Sun(1.0, "sun", "none" ) );
+    shapeList.push_back(new Planet(0.4, 2.0, 1.0, 1.0, "earth", "none") );
     shapeList.push_back( new Orb(0.3, 4.0, 1.0, 1.0, "sum" , "none") );
     //generate();
 
