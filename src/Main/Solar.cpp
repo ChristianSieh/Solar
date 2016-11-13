@@ -151,7 +151,7 @@ void Animate( void )
     glLoadIdentity();
 
     // Back off eight units to be able to view from the origin.
-    glTranslatef ( 0.0, 0.0, -8.0 );
+    glTranslatef ( 0.0, 0.0, -18.0 );
 
     // Rotate the plane of the elliptic
     // (rotate the model's plane about the x axis by fifteen degrees)
@@ -213,10 +213,7 @@ int main( int argc, char** argv )
     glutCreateWindow( "Solar System Demo" );
 
 
-    shapeList.push_back(new Sun(1.0, "sun", "none" ) );
-    shapeList.push_back(new Planet(0.4, 2.0, 1.0, 1.0, "earth", "none") );
-    shapeList.push_back( new Orb(0.3, 4.0, 1.0, 1.0, "sum" , "none") );
-    //generate();
+    generate(shapeList);
 
     // Initialize OpenGL.
     OpenGLInit();

@@ -15,5 +15,12 @@ Planet::~Planet()
 {
 }
 
+void Planet::drawWireFrame() const
+{
+    glColor3fv(White);
+    //glRotatef( 90.0, 0.0, 0.0, 0.0 );
+    glTranslatef( distance, 0.0, 0.0 );
+    glutWireSphere( radius, 15, 15 );
+}
 
 

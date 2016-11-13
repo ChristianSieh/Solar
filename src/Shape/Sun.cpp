@@ -1,11 +1,11 @@
 #include "Sun.h"
 
-Sun::Sun( float r, string n, string i )
+Sun::Sun( float r, float d, string n, string i )
 {
     radius = r;
     distance = 0.0;
     totalYear = 0.0;
-    totalDay = 0.0;
+    totalDay = d;
     name = n;
     img = i;
 }

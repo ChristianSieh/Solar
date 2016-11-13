@@ -2,50 +2,54 @@
 
 
 
-void generate()
+void generate(vector<Shape*> &shapeList)
 {
-    string filename = "planets.txt";
-    openfile( filename ); 
-}
+    genSun(shapeList);
+    genMercury(shapeList);
+    genVenus(shapeList);
+    genEarth(shapeList);
+    genMars(shapeList);
+    genJupiter(shapeList);
+    genSaturn(shapeList);
+    genUranus(shapeList);
+    genNeptune(shapeList);
 
-void openfile( string filename)
+
+}
+void genSun(vector<Shape*> &shapeList)
 {
-    //openfile
-    ifstream cin;
-    string line, type;
-
-    cin.open( filename , ios::in );
-    if(cin.is_open())
-    {
-	while( !cin.eof() )
-	{
-	    cin >> type;
-            getline( cin, line);
-            cerr << "type: " << type << "    : " << line << endl;
-//	    genPick( type );
-	}
-        /*while( getline(cin, line ))
-        {
-            genPick( line.front() ) ;
-        }*/
-	cin.close();
-    }
-    else
-    {
-	cerr << "Unable to openfile: " << filename << endl;
-    }
+     shapeList.push_back( new Sun( 18.0, 25,  "Sun", "none" ) );
+     //shapeList.push_back( new Sun( 696000, 25,  "Sun", "none" ) );
 }
-
-
-void genPick( function <void ()> &myFunc)
+void genMercury(vector<Shape*> &shapeList)
 {
-    cerr << "in func pick" << endl;
-    myFunc();
+    shapeList.push_back( new Planet( 2439, 58, 88, 1416, "Mercury", "none" ) );
 }
-
-void planet( )
+void genVenus(vector<Shape*> &shapeList)
 {
-   cerr << "gen planets" << endl;
-  
+    shapeList.push_back( new Planet( 6052, 108, 225, 5832, "Venus", "none" ) );
 }
-
+void genEarth(vector<Shape*> &shapeList)
+{
+    shapeList.push_back( new Planet( 6378, 150, 365, 24, "Earth", "none" ) );
+}
+void genMars(vector<Shape*> &shapeList)
+{
+    shapeList.push_back( new Planet( 3394, 228, 687, 24.6, "Mars", "none" ) );
+}
+void genJupiter(vector<Shape*> &shapeList)
+{
+    shapeList.push_back( new Planet( 71398, 779, 4332, 9.8, "Jupiter", "none" ) );
+}
+void genSaturn(vector<Shape*> &shapeList)
+{
+    shapeList.push_back( new Planet( 60270, 1424, 10761, 10.2, "Saturn", "none" ) );
+}
+void genUranus(vector<Shape*> &shapeList)
+{
+    shapeList.push_back( new Planet( 25550, 2867, 30682, 15.5, "Uranus", "none" ) );
+}
+void genNeptune(vector<Shape*> &shapeList)
+{
+    shapeList.push_back( new Planet( 24750, 4492, 60195, 15.8, "Neptune", "none" ) );
+}

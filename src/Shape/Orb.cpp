@@ -19,10 +19,6 @@ void Orb::drawWireFrame() const
 {
     //set color
     glColor3fv(White); // defautling to yellow
-    //rotate around centerpoint
-    //glRotatef( 360.0 * currDay / totalYear, 0.0, 1.0, 0.0) ;
-    // Translate Sphere to location
-    glRotatef( 90.0, 1.0, 0.0, 0.0 );
     glTranslatef( distance, 0.0, 0.0 );
     // draw Sphere (radius, slices, stacks)
     glutWireSphere( radius, 15, 15 );
