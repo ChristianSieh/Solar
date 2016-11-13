@@ -15,7 +15,7 @@ class Orb : public Shape
 
     public:
 	//constructor 
-	Orb( float r = 0.0, float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null");
+	Orb( float r = 1.0, float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null");
 	~Orb();
 	void drawWireFrame() const;
 	void drawSolid() const;

@@ -22,7 +22,6 @@ class Shape
 	float totalYear;
 	float currYear;
 	float totalDay;
-	float currDay;
 	string name;
 	string img;
 

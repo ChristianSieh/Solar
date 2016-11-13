@@ -60,7 +60,7 @@ vector<Shape*> shapeList;
 
 // these three variables control the animation's state and speed.
 float HourOfDay = 0.0;
-float DayOfYear = 0.0;
+float currDay = 0.0;
 float AnimateIncrement = 24.0;  // Time step for animation (hours)
 
 // glutKeyboardFunc is called to set this function to handle normal key presses.
@@ -139,10 +139,10 @@ void Animate( void )
     {
         // Update the animation state
         HourOfDay += AnimateIncrement;
-        DayOfYear += AnimateIncrement / 24.0;
+        currDay += AnimateIncrement / 24.0;
 
         HourOfDay = HourOfDay - ( ( int ) ( HourOfDay / 24 ) ) * 24;
-        DayOfYear = DayOfYear - ( ( int ) ( DayOfYear / 365 ) ) * 365;
+        currDay = currDay - ( ( int ) ( currDay / 365 ) ) * 365;
     }
 
     // Clear the current matrix (Modelview)
@@ -153,7 +153,7 @@ void Animate( void )
 
     // Rotate the plane of the elliptic
     // (rotate the model's plane about the x axis by fifteen degrees)
-    glRotatef( 15.0, 1.0, 0.0, 0.0 );
+    glRotatef( 90.0, 0.0, 0.0, 0.0 );
 
     for(auto & obj: shapeList)
 	obj->drawWireFrame();
@@ -234,10 +234,9 @@ int main( int argc, char** argv )
     glutCreateWindow( "Solar System Demo" );
 
 
-    Orb sun;
-    sun.printAll();
     shapeList.push_back(new Orb(1.0, 0.0, 1.0, 1.0, "sun", "none" ) );
-    shapeList.push_back(new Orb(0.4, 4.0, 1.0, 1.0, "earth", "none") );
+    shapeList.push_back(new Orb(0.4, 2.0, 1.0, 1.0, "earth", "none") );
+    shapeList.push_back( new Orb(0.3, 4.0, 1.0, 1.0, "sum" , "none") );
     //generate();
 
     // Initialize OpenGL.
