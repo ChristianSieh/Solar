@@ -15,10 +15,25 @@ Orb::~Orb()
 {
 }
 
+void Orb::translate() const
+{
+   cerr << " translate " << endl;
+}
+
+void Orb::rotate() const
+{
+    cerr << " rotate " << endl;
+}
+
+void Orb::draw() const
+{
+    cerr << " draw " << endl;
+}
+
 void Orb::drawWireFrame() const
 {
     //set color
-    glColor3fv(White); // defautling to yellow
+    glColor3fv(White); // defautling to white
     glTranslatef( distance, 0.0, 0.0 );
     // draw Sphere (radius, slices, stacks)
     glutWireSphere( radius, 15, 15 );
@@ -26,7 +41,7 @@ void Orb::drawWireFrame() const
 
 void Orb::drawSolid() const
 {
-   cerr << "solid orb" << endl;
+    cerr << "draw solid" << endl;
 }
 
 void Orb::drawImg() const
@@ -41,6 +56,10 @@ void Orb::printAll() const
     printDistance();
 }
 
+void Orb::printName() const
+{
+    cerr << "name: " << name << endl;
+}
 void Orb::printDate() const 
 {
    cerr << "date: " << totalYear <<  endl;

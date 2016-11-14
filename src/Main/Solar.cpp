@@ -32,145 +32,20 @@
 
 // JMW: Minor modifications for CSC433/533 Computer Graphics, Fall 2016.
 
-#include <cstdlib>
-#include <GL/freeglut.h>
-#include <vector>
 
 #include "Gen.h"
+#include "Main.h"
 
-//shape classes
-#include "../Shape/Shape.h"
-#include "../Shape/Orb.h"
-#include "../Shape/Sun.h"
-#include "../Shape/Planet.h"
+//shape 
+vector<Shape*> shapeList;
+
+//global rotation info
+GLfloat theta[] = { 0.0, 0.0, 0.0 };
+GLint axis = 2;
 
 // function prototypes
 void OpenGLInit( void );
-void Animate( void );
-void Key_r( void );
-void Key_s( void );
-void Key_up( void );
-void Key_down( void );
-void ResizeWindow( int w, int h );
-void KeyPressFunc( unsigned char Key, int x, int y );
-void SpecialKeyFunc( int Key, int x, int y );
 
-// global variables
-GLenum spinMode = GL_TRUE;
-GLenum singleStep = GL_FALSE;
-vector<Shape*> shapeList;
-
-// these three variables control the animation's state and speed.
-float HourOfDay = 0.0;
-float currDay = 0.0;
-float AnimateIncrement = 24.0;  // Time step for animation (hours)
-
-// glutKeyboardFunc is called to set this function to handle normal key presses.
-void KeyPressFunc( unsigned char Key, int x, int y )
-{
-    switch ( Key )
-    {
-        case 'R':
-        case 'r':
-            Key_r();
-            break;
-        case 's':
-        case 'S':
-            Key_s();
-            break;
-        case 27: 	// Escape key
-            exit( 1 );
-    }
-}
-
-// glutSpecialFunc is called to set this function to handle all special key presses
-// See glut.h for the names of special keys.
-void SpecialKeyFunc( int Key, int x, int y )
-{
-    switch ( Key )
-    {
-        case GLUT_KEY_UP:
-            Key_up();
-            break;
-        case GLUT_KEY_DOWN:
-            Key_down();
-            break;
-    }
-}
-
-// restart animation
-void Key_r( void )
-{
-    if ( singleStep )
-    {			// If ending single step mode
-        singleStep = GL_FALSE;
-        spinMode = GL_TRUE;		// Restart animation
-    }
-    else
-    {
-        spinMode = !spinMode;	// Toggle animation on and off.
-    }
-}
-
-// single step animation
-void Key_s( void )
-{
-    singleStep = GL_TRUE;
-    spinMode = GL_TRUE;
-}
-
-// animation speed
-void Key_up( void )
-{
-    AnimateIncrement *= 2.0;			// Double the animation time step
-}
-
-// animation speed
-void Key_down( void )
-{
-    AnimateIncrement /= 2.0;			// Halve the animation time step
-}
-
-// Animate() handles the animation and the redrawing of the graphics window contents.
-void Animate( void )
-{
-    // Clear the redering window
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
-    if ( spinMode )
-    {
-        // Update the animation state
-        HourOfDay += AnimateIncrement;
-        currDay += AnimateIncrement / 24.0;
-
-        HourOfDay = HourOfDay - ( ( int ) ( HourOfDay / 24 ) ) * 24;
-        currDay = currDay - ( ( int ) ( currDay / 365 ) ) * 365;
-    }
-
-    // Clear the current matrix (Modelview)
-    glLoadIdentity();
-
-    // Back off eight units to be able to view from the origin.
-    glTranslatef ( 0.0, 0.0, -18.0 );
-
-    // Rotate the plane of the elliptic
-    // (rotate the model's plane about the x axis by fifteen degrees)
-    glRotatef( 90.0, 1.0, 0.0, 0.0 );
-
-    for(auto & obj: shapeList)
-	obj->drawWireFrame();
-
-    // Flush the pipeline, and swap the buffers
-    glFlush();
-    glutSwapBuffers();
-
-    if ( singleStep )
-    {
-        spinMode = GL_FALSE;
-    }
-
-    glutPostRedisplay();		// Request a re-draw for animation purposes
-}
 
 // Initialize OpenGL's rendering modes
 void OpenGLInit( void )
@@ -181,23 +56,7 @@ void OpenGLInit( void )
     glEnable( GL_DEPTH_TEST );
 }
 
-// ResizeWindow is called when the window is resized
-void ResizeWindow( int w, int h )
-{
-    float aspectRatio;
-    h = ( h == 0 ) ? 1 : h;
-    w = ( w == 0 ) ? 1 : w;
-    glViewport( 0, 0, w, h );	// View port uses whole window
-    aspectRatio = ( float ) w / ( float ) h;
 
-    // Set up the projection view matrix (not very well!)
-    glMatrixMode( GL_PROJECTION );
-    glLoadIdentity();
-    gluPerspective( 60.0, aspectRatio, 1.0, 30.0 );
-
-    // Select the Modelview matrix
-    glMatrixMode( GL_MODELVIEW );
-}
 
 // Main routine
 // Set up OpenGL, hook up callbacks, and start the main loop

@@ -29,10 +29,14 @@ class Shape
 	//constructor 
 	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null");
 	virtual ~Shape();
+        virtual void translate() const = 0;
+        virtual void rotate() const = 0;
+	virtual void draw() const = 0;
 	virtual void drawWireFrame() const = 0;
 	virtual void drawSolid() const = 0;
 	virtual void drawImg() const = 0;
 	virtual void printAll() const = 0;
+	virtual void printName() const = 0;
 	virtual void printDate() const = 0;
 	virtual void printRadius() const = 0;
 	virtual void printDistance() const = 0;
