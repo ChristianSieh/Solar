@@ -151,7 +151,7 @@ void Animate( void )
     glLoadIdentity();
 
     // Back off eight units to be able to view from the origin.
-    glTranslatef ( 0.0, 0.0, -800000.0 );
+    glTranslatef ( 0.0, 0.0, -18.0 );
 
     // Rotate the plane of the elliptic
     // (rotate the model's plane about the x axis by fifteen degrees)

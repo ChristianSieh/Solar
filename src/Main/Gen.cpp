@@ -5,21 +5,21 @@
 void generate(vector<Shape*> &shapeList)
 {
     genSun(shapeList);
-    genMercury(shapeList);
-    genVenus(shapeList);
-    genEarth(shapeList);
-    genMars(shapeList);
-    genJupiter(shapeList);
-    genSaturn(shapeList);
-    genUranus(shapeList);
-    genNeptune(shapeList);
+    //genMercury(shapeList);
+    //genVenus(shapeList);
+    //genEarth(shapeList);
+    //genMars(shapeList);
+    //genJupiter(shapeList);
+    //genSaturn(shapeList);
+    //genUranus(shapeList);
+    //genNeptune(shapeList);
 
 
 }
 void genSun(vector<Shape*> &shapeList)
 {
-     //shapeList.push_back( new Sun( 18.0, 25,  "Sun", "none" ) );
-     shapeList.push_back( new Sun( 696000, 25,  "Sun", "none" ) );
+     shapeList.push_back( new Sun( 1.0, 25,  "Sun", "none" ) );
+     //apeList.push_back( new Sun( 696000, 25,  "Sun", "none" ) );
 }
 void genMercury(vector<Shape*> &shapeList)
 {
