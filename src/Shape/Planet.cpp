@@ -4,7 +4,7 @@
 Planet::Planet( float r, float di, float y, float da, string n, string i)
 {
     radius = r;
-    distance = di;
+    distance = di * 1000000;
     totalYear = y;
     totalDay = da;
     name = n;

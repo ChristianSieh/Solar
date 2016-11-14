@@ -18,8 +18,8 @@ void generate(vector<Shape*> &shapeList)
 }
 void genSun(vector<Shape*> &shapeList)
 {
-     shapeList.push_back( new Sun( 18.0, 25,  "Sun", "none" ) );
-     //shapeList.push_back( new Sun( 696000, 25,  "Sun", "none" ) );
+     //shapeList.push_back( new Sun( 18.0, 25,  "Sun", "none" ) );
+     shapeList.push_back( new Sun( 696000, 25,  "Sun", "none" ) );
 }
 void genMercury(vector<Shape*> &shapeList)
 {
