@@ -8,6 +8,7 @@ Sun::Sun( float r, float d, string n, string i )
     totalDay = d;
     name = n;
     img = i;
+    type = "Sun";
 }
 
 Sun::~Sun()

@@ -9,6 +9,7 @@ Moon::Moon( float r, float di, float y, float da, string n, string i)
     totalDay = da;
     name = n;
     img = i; 
+    type = "Moon";
 }
 
 Moon::~Moon()

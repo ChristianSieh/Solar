@@ -24,7 +24,6 @@ void Animate( void )
 
     // Rotate the plane of the elliptic
     // (rotate the model's plane about the x axis by fifteen degrees)
-    //glRotatef( 90.0, 1.0, 0.0, 0.0 );
     glRotatef( theta[0], 1.0, 0.0, 0.0 );
     glRotatef( theta[1], 0.0, 1.0, 0.0 );
     glRotatef( theta[2], 0.0, 0.0, 1.0 );

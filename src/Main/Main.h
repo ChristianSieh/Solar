@@ -26,14 +26,20 @@ static float HourOfDay = 0.0;
 static float currDay = 0.0;
 static float AnimateIncrement = 24.0;  // Time step for animation (hours)
 
-
+//display
 void Animate( void );
 void ResizeWindow( int w, int h);
+
+//events
 void Key_r( void );
 void Key_s( void );
 void Key_up( void );
 void Key_down( void );
 void KeyPressFunc( unsigned char Key, int x, int y );
 void SpecialKeyFunc( int Key, int x, int y );
+
+//menu
+void createMenu();
+
 
 #endif 

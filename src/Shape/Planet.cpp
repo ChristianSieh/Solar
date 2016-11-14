@@ -4,11 +4,12 @@
 Planet::Planet( float r, float di, float y, float da, string n, string i)
 {
     radius = r;
-    distance = di * 1000000;
+    distance = di;
     totalYear = y;
     totalDay = da;
     name = n;
-    img = i; 
+    img = i;
+    type = "Planet"; 
 }
 
 Planet::~Planet()

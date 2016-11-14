@@ -7,12 +7,12 @@ Shape::Shape( float di, float y, float da, string n, string i)
     totalYear = y;
     totalDay = da;
     name = n;
-    img = i; 
+    img = i;
+    type = "Shape"; 
 }
 
 Shape::~Shape()
 {
 }
-
 
 

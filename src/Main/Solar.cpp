@@ -36,6 +36,8 @@
 #include "Gen.h"
 #include "Main.h"
 
+#include <typeinfo>
+
 //shape 
 vector<Shape*> shapeList;
 

@@ -4,17 +4,13 @@
 #include <GL/freeglut.h>
 #include <string>
 #include <iostream>
+
+#include "Orb.h"
+
 using namespace std;
 
-class Moon
+class Moon: public Orb
 {
-    protected:
-	float radius;
-	float distance;
-	float totalYear;
-	float totalDay;
-	string name;
-	string img;
 
     public:
 	//constructor 

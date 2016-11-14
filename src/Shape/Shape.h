@@ -24,6 +24,7 @@ class Shape
 	float totalDay;
 	string name;
 	string img;
+	string type;
 
     public:
 	//constructor 
