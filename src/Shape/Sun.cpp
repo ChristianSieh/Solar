@@ -17,8 +17,10 @@ Sun::~Sun()
 
 void Sun::drawWireFrame() const 
 {
+
     glColor3fv(Yellow);
     glRotatef( 90.0, 0.0, 0.0, 0.0);
     glTranslatef( distance, 0.0, 0.0 );
     glutWireSphere( radius, 15, 15);
+
 }

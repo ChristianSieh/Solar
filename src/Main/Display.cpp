@@ -1,5 +1,58 @@
 #include "Main.h"
 
+struct cell {
+	int id;
+	int x, y;
+	float min, max;
+	float value;
+	float step;
+	string info;
+	string format;
+};
+
+cell lookat[9] = {
+    { 1, 180, 120, -5.0, 5.0, 0.0, 0.1,
+        "Specifies the X position of the eye point.", "%.2f" },
+    { 2, 240, 120, -5.0, 5.0, 0.0, 0.1,
+    "Specifies the Y position of the eye point.", "%.2f" },
+    { 3, 300, 120, -5.0, 5.0, 28.0, 0.1,
+    "Specifies the Z position of the eye point.", "%.2f" },
+    { 4, 180, 160, -5.0, 5.0, 0.0, 0.1,
+    "Specifies the X position of the reference point.", "%.2f" },
+    { 5, 240, 160, -5.0, 5.0, 0.0, 0.1,
+    "Specifies the Y position of the reference point.", "%.2f" },
+    { 6, 300, 160, -5.0, 5.0, 0.0, 0.1,
+    "Specifies the Z position of the reference point.", "%.2f" },
+    { 7, 180, 200, -2.0, 2.0, 0.0, 0.1,
+    "Specifies the X direction of the up vector.", "%.2f" },
+    { 8, 240, 200, -2.0, 2.0, 1.0, 0.1,
+    "Specifies the Y direction of the up vector.", "%.2f" },
+    { 9, 300, 200, -2.0, 2.0, 0.0, 0.1,
+    "Specifies the Z direction of the up vector.", "%.2f" },
+};
+
+
+cell perspective[4] = {
+    { 10, 180, 80, 1.0, 179.0, 60.0, 1.0,
+        "Specifies field of view angle (in degrees) in y direction.", "%.1f" },
+    { 11, 240, 80, -3.0, 3.0, 1.0, 0.01,
+    "Specifies field of view in x direction (width/height).", "%.2f" },
+    { 12, 300, 80, 0.1, 10.0, 1.0, 0.05,
+    "Specifies distance from viewer to near clipping plane.", "%.1f" },
+    { 13, 360, 80, 0.1, 10.0, 30.0, 0.05,
+    "Specifies distance from viewer to far clipping plane.", "%.1f" },
+};
+
+GLdouble projection[16], modelview[16];
+
+GLenum spinMode = GL_TRUE;
+GLenum singleStep = GL_FALSE;
+
+float HourOfDay = 0.0;
+float currDay = 0.0;
+float AnimateIncrement = 24.0; 
+
+
 // Animate() handles the animation and the redrawing of the graphics window contents.
 void Animate( void )
 {
@@ -19,14 +72,11 @@ void Animate( void )
     // Clear the current matrix (Modelview)
     glLoadIdentity();
 
-    // Back off eight units to be able to view from the origin.
-    glTranslatef ( 0.0, 0.0, -18.0 );
+    gluLookAt(lookat[0].value, lookat[1].value, lookat[2].value,
+        lookat[3].value, lookat[4].value, lookat[5].value,
+        lookat[6].value, lookat[7].value, lookat[8].value); 
+     glGetDoublev(GL_MODELVIEW_MATRIX, modelview); 
 
-    // Rotate the plane of the elliptic
-    // (rotate the model's plane about the x axis by fifteen degrees)
-    glRotatef( theta[0], 1.0, 0.0, 0.0 );
-    glRotatef( theta[1], 0.0, 1.0, 0.0 );
-    glRotatef( theta[2], 0.0, 0.0, 1.0 );
 
     for(auto & obj: shapeList)
     {
@@ -46,17 +96,25 @@ void Animate( void )
 
 void ResizeWindow( int w, int h )
 {
-    float aspectRatio;
     h = ( h == 0 ) ? 1 : h;
     w = ( w == 0 ) ? 1 : w;
     glViewport( 0, 0, w, h );	// View port uses whole window
-    aspectRatio = ( float ) w / ( float ) h;
+    perspective[1].value = ( float ) w / ( float ) h;
 
     // Set up the projection view matrix (not very well!)
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
-    gluPerspective( 60.0, aspectRatio, 1.0, 30.0 );
-
+    //change
+    gluPerspective(perspective[0].value, perspective[1].value, 
+        perspective[2].value, perspective[3].value);
+    glGetDoublev(GL_PROJECTION_MATRIX, projection);
     // Select the Modelview matrix
     glMatrixMode( GL_MODELVIEW );
+
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_LIGHTING);
+    //glEnable(GL_LIGHT0);
+
+  
 }

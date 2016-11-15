@@ -18,7 +18,7 @@ void generate(vector<Shape*> &shapeList)
 }
 void genSun(vector<Shape*> &shapeList)
 {
-     shapeList.push_back( new Sun( 1.0, 25,  "Sun", "none" ) );
+     shapeList.push_back( new Sun( 10.0, 25,  "Sun", "none" ) );
      //apeList.push_back( new Sun( 696000, 25,  "Sun", "none" ) );
 }
 void genMercury(vector<Shape*> &shapeList)

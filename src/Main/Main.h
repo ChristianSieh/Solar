@@ -13,18 +13,17 @@
 
 
 // global variables
-static GLenum spinMode = GL_TRUE;
-static GLenum singleStep = GL_FALSE;
+extern GLenum spinMode;
+extern GLenum singleStep;
 extern vector<Shape*> shapeList;
 
 //rotation info
-extern GLfloat theta[];
 extern GLint axis;
 
-// these three variables control the animation's state and speed.
-static float HourOfDay = 0.0;
-static float currDay = 0.0;
-static float AnimateIncrement = 24.0;  // Time step for animation (hours)
+// these three variables control the animation's state and speed
+extern float HourOfDay;
+extern float currDay;
+extern float AnimateIncrement;  // Time step for animation (hours)
 
 //display
 void Animate( void );
