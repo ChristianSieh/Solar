@@ -5,7 +5,7 @@
 void generate(vector<Shape*> &shapeList)
 {
     genSun(shapeList);
-    //genMercury(shapeList);
+    genMercury(shapeList);
     //genVenus(shapeList);
     //genEarth(shapeList);
     //genMars(shapeList);

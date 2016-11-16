@@ -39,6 +39,8 @@ void SpecialKeyFunc( int Key, int x, int y );
 
 //menu
 void createMenu();
+void MainMenuHandler( int item );
+void PlanetMenuHandler( int item );
 
 
 #endif 

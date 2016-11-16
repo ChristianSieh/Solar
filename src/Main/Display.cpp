@@ -1,6 +1,7 @@
 #include "Main.h"
 
-struct cell {
+struct cell 
+{
 	int id;
 	int x, y;
 	float min, max;
@@ -12,7 +13,7 @@ struct cell {
 
 cell lookat[9] = {
     { 1, 180, 120, -5.0, 5.0, 0.0, 0.1,
-        "Specifies the X position of the eye point.", "%.2f" },
+    "Specifies the X position of the eye point.", "%.2f" },
     { 2, 240, 120, -5.0, 5.0, 0.0, 0.1,
     "Specifies the Y position of the eye point.", "%.2f" },
     { 3, 300, 120, -5.0, 5.0, 28.0, 0.1,

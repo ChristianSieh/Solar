@@ -89,6 +89,8 @@ int main( int argc, char** argv )
     // Callback for graphics image redrawing
     glutDisplayFunc( Animate );
 
+    createMenu();
+
     // Start the main loop.  glutMainLoop never returns.
     glutMainLoop( );
 

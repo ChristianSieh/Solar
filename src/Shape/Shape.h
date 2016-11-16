@@ -22,11 +22,11 @@ class Shape
 	float totalYear;
 	float currYear;
 	float totalDay;
-	string name;
 	string img;
 	string type;
 
     public:
+	string name;
 	//constructor 
 	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null");
 	virtual ~Shape();
