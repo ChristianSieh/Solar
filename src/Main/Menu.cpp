@@ -13,11 +13,14 @@ void createMenu()
     value = 1;
     glutCreateMenu(MainMenuHandler);
     glutAddMenuEntry("Wireframe Models", value++);
-    glutAddMenuEntry("Flat Shaded Models", value++);
-    glutAddMenuEntry("Smooth Shaded Models", value++);
+    glutAddMenuEntry("Solid Models", value++);
+    glutAddMenuEntry("Flat Shadeing", value++);
+    glutAddMenuEntry("Smooth Shadeing", value++);
+    glutAddMenuEntry("Textures On", value++);
+    glutAddMenuEntry("Textures Off", value++);
     glutAddSubMenu("Planets", planetMenu);
     glutAddMenuEntry("Reset Camera", value++);
-    glutAddMenuEntry("Reset Planets", value++);
+    glutAddMenuEntry("Reset Solar System", value++);
     glutAddMenuEntry("Exit Program", value++);
 
     glutAttachMenu(GLUT_RIGHT_BUTTON);
@@ -27,37 +30,53 @@ void MainMenuHandler( int item )
 {
     switch ( item )
     {
-        // Switch to wireframe
+        // Switch to wireframe modesl
         case 1:
-            
+            solid = false;            
+            break;
+
+        // Switch to solid models
+        case 2:
+            solid = true;
             break;
 
         // Switch to flat shading
-        case 2:
-            
+        case 3:
+            smooth = false;
             break;
 
         // Switch to smooth shading
-        case 3:
-            
+        case 4:
+            smooth = true;
+            break;
+
+        // Turn textures on
+        case 5:
+            texture = true;
+            break;
+
+        // Turn textures off
+        case 6:
+            texture = false;
             break;
 
         // Reset Camera
-        case 4:
+        case 7:
             
             break;
 
-        // Reset Planets
-        case 5:
+        // Reset Solar System
+        case 8:
             
             break;
 
         // Exit
-        case 6:
+        case 9:
             exit( 0 );
             break;
 
-        default:    // should not occur
+        // should not occur
+        default:
             cout << "Invalid Menu Selection" << item << endl;
             break;
     }

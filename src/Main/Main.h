@@ -11,25 +11,27 @@
 #include "../Shape/Sun.h"
 #include "../Shape/Planet.h"
 
-
-// global variables
+// Global variables
 extern GLenum spinMode;
 extern GLenum singleStep;
 extern vector<Shape*> shapeList;
+extern bool solid;
+extern bool smooth;
+extern bool texture;
 
-//rotation info
+// Rotation info
 extern GLint axis;
 
-// these three variables control the animation's state and speed
+// These three variables control the animation's state and speed
 extern float HourOfDay;
 extern float currDay;
 extern float AnimateIncrement;  // Time step for animation (hours)
 
-//display
+// Display
 void Animate( void );
 void ResizeWindow( int w, int h);
 
-//events
+// Events
 void Key_r( void );
 void Key_s( void );
 void Key_up( void );
@@ -37,10 +39,9 @@ void Key_down( void );
 void KeyPressFunc( unsigned char Key, int x, int y );
 void SpecialKeyFunc( int Key, int x, int y );
 
-//menu
+// Menu
 void createMenu();
 void MainMenuHandler( int item );
 void PlanetMenuHandler( int item );
-
 
 #endif 

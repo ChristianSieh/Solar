@@ -78,11 +78,42 @@ void Animate( void )
         lookat[6].value, lookat[7].value, lookat[8].value); 
      glGetDoublev(GL_MODELVIEW_MATRIX, modelview); 
 
+    if(smooth)
+        glShadeModel(GL_SMOOTH);
+    else
+        glShadeModel(GL_FLAT);
 
-    for(auto & obj: shapeList)
+    if(texture)
     {
-	obj->drawWireFrame();
+        glEnable( GL_TEXTURE_2D );
+
+        for(auto & obj: shapeList)
+        {
+            int err = obj->drawImg();
+            if(err == -1)
+            {
+                texture = false;
+            }
+        }
     }
+    else
+    {
+        if(solid)
+        {
+            for(auto & obj: shapeList)
+            {
+                obj->drawSolid();
+            }
+        }
+        else
+        {
+            for(auto & obj: shapeList)
+            {
+	            obj->drawWireFrame();
+            }
+        }
+    }
+
     // Flush the pipeline, and swap the buffers
     glFlush();
     glutSwapBuffers();
@@ -105,17 +136,17 @@ void ResizeWindow( int w, int h )
     // Set up the projection view matrix (not very well!)
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
+
     //change
     gluPerspective(perspective[0].value, perspective[1].value, 
         perspective[2].value, perspective[3].value);
     glGetDoublev(GL_PROJECTION_MATRIX, projection);
+
     // Select the Modelview matrix
     glMatrixMode( GL_MODELVIEW );
 
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glEnable(GL_DEPTH_TEST);
     //glEnable(GL_LIGHTING);
-    //glEnable(GL_LIGHT0);
-
-  
+    //glEnable(GL_LIGHT0); 
 }

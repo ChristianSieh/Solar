@@ -45,6 +45,10 @@ vector<Shape*> shapeList;
 GLfloat theta[] = { 0.0, 0.0, 0.0 };
 GLint axis = 2;
 
+bool solid = false;
+bool smooth = false;
+bool texture = false;
+
 // function prototypes
 void OpenGLInit( void );
 
@@ -56,9 +60,11 @@ void OpenGLInit( void )
     glClearColor( 0.0, 0.0, 0.0, 0.0 );
     glClearDepth( 1.0 );
     glEnable( GL_DEPTH_TEST );
+    glEnable( GL_NORMALIZE );
+    glEnable( GL_CULL_FACE );
+    glCullFace( GL_BACK );
+
 }
-
-
 
 // Main routine
 // Set up OpenGL, hook up callbacks, and start the main loop
@@ -72,7 +78,6 @@ int main( int argc, char** argv )
     glutInitWindowPosition( 0, 0 );
     glutInitWindowSize( 600, 360 );
     glutCreateWindow( "Solar System Demo" );
-
 
     generate(shapeList);
 
