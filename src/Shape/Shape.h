@@ -24,6 +24,7 @@ class Shape
     inline int GetNumBytesPerRow( int NumCols ) const;
 
     protected:
+    float color[3];
 	float distance;
 	float totalYear;
 	float currYear;
@@ -35,7 +36,7 @@ class Shape
     public:
 	string name;
 	//constructor 
-	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null");
+	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null", float color[3] = (float*)White);
 	virtual ~Shape();
     virtual void translate() const = 0;
     virtual void rotate() const = 0;
