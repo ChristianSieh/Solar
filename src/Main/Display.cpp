@@ -77,9 +77,6 @@ void Animate( void )
    // glLoadIdentity();
    // glEnable(GL_DEPTH_TEST);
 
-
-    
-
     if(smooth)
         glShadeModel(GL_SMOOTH);
     else
@@ -94,7 +91,7 @@ void Animate( void )
             int err = obj->drawImg();
             if(err == -1)
             {
-                texture = false;
+                obj->drawSolid();
             }
         }
     }
@@ -151,4 +148,42 @@ void ResizeWindow( int w, int h )
     glEnable(GL_DEPTH_TEST);
     //glEnable(GL_LIGHTING);
     //glEnable(GL_LIGHT0); 
+}
+
+/*
+Author: John M. Weiss, Ph.D.
+Class:  CSC433/533 Computer Graphics
+Date:   Fall 2016
+Ref:    Angel, OpenGL Primer, 2008.
+*/
+
+// set up light and material properties
+void lightModel()
+{
+    // specify material reflectivity
+    GLfloat mat_ambient[] = { 0.0, 0.0, 1.0, 1.0 };     // blue ambient reflectivity
+    GLfloat mat_diffuse[] = { 0.0, 1.0, 0.0, 1.0 };     // green diffuse reflectivity
+    GLfloat mat_specular[] = { 1.0, 0.0, 0.0, 1.0 };    // red highlights
+    GLfloat mat_shininess = { 100.0 };
+    
+    glMaterialfv( GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient );
+    glMaterialfv( GL_FRONT_AND_BACK, GL_DIFFUSE, mat_diffuse );
+    glMaterialfv( GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular );
+    glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess );
+    
+    // specify light source properties
+    GLfloat light_position[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat light_ambient[] = { 0.4, 0.4, 0.4, 1.0 };       // ambient light
+    GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };       // diffuse light
+    GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };      // highlights
+
+    glEnable( GL_LIGHT0 );      // enable one light source
+    glLightfv( GL_LIGHT0, GL_POSITION, light_position );
+    glLightfv( GL_LIGHT0, GL_AMBIENT, light_ambient );
+    glLightfv( GL_LIGHT0, GL_DIFFUSE, light_diffuse );
+    glLightfv( GL_LIGHT0, GL_SPECULAR, light_specular );
+
+    glCullFace( GL_BACK );
+
+    glColor3f ( 0.8, 0.8, 0.0 );            // draw in yellow
 }

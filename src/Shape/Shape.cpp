@@ -1,6 +1,6 @@
 #include "Shape.h"
 
-Shape::Shape( float di, float y, float da, string n, string i)
+Shape::Shape( float di, float y, float da, string n, string i, float c[3])
 {
     distance = di;
     totalYear = y;
@@ -8,6 +8,7 @@ Shape::Shape( float di, float y, float da, string n, string i)
     name = n;
     img = i;
     type = "Shape"; 
+    copy(c, c + 3, color);
 }
 
 Shape::~Shape()

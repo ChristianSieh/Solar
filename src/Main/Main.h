@@ -44,6 +44,7 @@ extern float AnimateIncrement;  // Time step for animation (hours)
 // Display
 void Animate( void );
 void ResizeWindow( int w, int h);
+void lightModel();
 
 // Events
 void Key_r( void );

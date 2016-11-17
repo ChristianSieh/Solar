@@ -4,6 +4,7 @@
 #include <GL/freeglut.h>
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -33,9 +34,10 @@ class Shape
     bool LoadBmpFile( const char* filename, int &NumRows, int &NumCols, unsigned char* &ImagePtr ) const;
 
     public:
+    float color[3];
 	string name;
 	//constructor 
-	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null");
+	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null", float c[3] = (float*)(Yellow));
 	virtual ~Shape();
     virtual void translate() const = 0;
     virtual void rotate() const = 0;
