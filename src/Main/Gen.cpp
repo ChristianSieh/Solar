@@ -16,7 +16,7 @@ void generate(vector<Shape*> &shapeList)
 }
 void genSun(vector<Shape*> &shapeList)
 {
-    float color[] = {0.968627451, 0.450980392, 0.047058824};
+    float color[] = {0.992156863, 0.945098039, 0.466666667};
     shapeList.push_back( new Sun( 10.0, 25,  "Sun", "../src/PlanetImg/sun.bmp", color ) );
     //apeList.push_back( new Sun( 696000, 25,  "Sun", "none" ) );
 }
@@ -27,7 +27,7 @@ void genMercury(vector<Shape*> &shapeList)
 }
 void genVenus(vector<Shape*> &shapeList)
 {
-    float color[] = {1, 1, 0.949019608};
+    float color[] = {0.654901961, 0.368627451, 0.070588235};
     shapeList.push_back( new Planet( 6052, 108, 225, 5832, "Venus", "../src/PlanetImg/venus.bmp", color ) );
 }
 void genEarth(vector<Shape*> &shapeList)
