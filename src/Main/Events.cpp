@@ -85,10 +85,11 @@ void Key_left( void )
 
 void Key_right( void )
 {
-    float y = lookat[0].value + lookat[0].step;
+    
+    float y =  lookat[0].value  + lookat[0].step;
     update(&lookat[0], y);
     
-    y = lookat[3].value + lookat[3].step;
+    y =  lookat[3].value   +  lookat[3].step;
     update(&lookat[3], y);
 }
 

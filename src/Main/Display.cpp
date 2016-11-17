@@ -1,13 +1,13 @@
 #include "Main.h"
 
 cell lookat[9] = {
-    { 1, 180, 120, -5.0, 5.0, 0.0, 0.1,
+    { 1, 180, 120, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the X position of the eye point.", "%.2f" },
     { 2, 240, 120, -5.0, 5.0, 0.0, 0.1,
     "Specifies the Y position of the eye point.", "%.2f" },
     { 3, 300, 120, -5.0, 5.0, 28.0, 0.1,
     "Specifies the Z position of the eye point.", "%.2f" },
-    { 4, 180, 160, -5.0, 5.0, 0.0, 0.1,
+    { 4, 180, 160, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the X position of the reference point.", "%.2f" },
     { 5, 240, 160, -5.0, 5.0, 0.0, 0.1,
     "Specifies the Y position of the reference point.", "%.2f" },
@@ -37,6 +37,7 @@ GLdouble projection[16], modelview[16];
 
 GLenum spinMode = GL_TRUE;
 GLenum singleStep = GL_FALSE;
+GLenum viewMode = GL_TRUE;
 
 float HourOfDay = 0.0;
 float currDay = 0.0;

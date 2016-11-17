@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <stdlib.h>
+#include <math.h>
 #include <vector>
 #include <GL/freeglut.h>
 
