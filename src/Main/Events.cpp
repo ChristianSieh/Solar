@@ -30,7 +30,15 @@ void SpecialKeyFunc( int Key, int x, int y )
         case GLUT_KEY_DOWN:
             Key_down();
             break;
+	case GLUT_KEY_LEFT:
+	    Key_left();
+	    break;
+	case GLUT_KEY_RIGHT:
+	    Key_right();
+	    break;
     }
+
+    glutPostRedisplay();
 }
 
 // restart animation
@@ -64,4 +72,38 @@ void Key_up( void )
 void Key_down( void )
 {
     AnimateIncrement /= 2.0;			// Halve the animation time step
+}
+
+void Key_left( void )
+{
+    float y = lookat[0].value - lookat[0].step;
+    update(&lookat[0], y);
+       
+    y = lookat[3].value - lookat[3].step;
+    update(&lookat[3], y);
+}
+
+void Key_right( void )
+{
+    float y = lookat[0].value + lookat[0].step;
+    update(&lookat[0], y);
+    
+    y = lookat[3].value + lookat[3].step;
+    update(&lookat[3], y);
+}
+
+void update(cell* cell, float y)
+{
+    if( cell->value < cell->min )
+    {
+	cell->value = cell->min;
+    }
+    else if( cell->value > cell->max )
+    {
+	cell->value = cell->max;
+    }
+    else
+    {
+	cell->value = y;
+    }
 }

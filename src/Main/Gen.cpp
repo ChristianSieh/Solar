@@ -4,15 +4,15 @@
 
 void generate(vector<Shape*> &shapeList)
 {
-    genSun(shapeList);
+    //genSun(shapeList);
     genMercury(shapeList);
-    //genVenus(shapeList);
-    //genEarth(shapeList);
-    //genMars(shapeList);
-    //genJupiter(shapeList);
-    //genSaturn(shapeList);
-    //genUranus(shapeList);
-    //genNeptune(shapeList);
+    genVenus(shapeList);
+    genEarth(shapeList);
+    genMars(shapeList);
+    genJupiter(shapeList);
+    genSaturn(shapeList);
+    genUranus(shapeList);
+    genNeptune(shapeList);
 
 
 }

@@ -47,7 +47,7 @@ void KeyPressFunc( unsigned char Key, int x, int y );
 void SpecialKeyFunc( int Key, int x, int y );
 
 // global variables
-GLenum spinMode = GL_TRUE;
+GLenum spinMode = GL_FALSE;
 GLenum singleStep = GL_FALSE;
 
 // these three variables control the animation's state and speed.
@@ -141,11 +141,11 @@ void Animate( void )
     glLoadIdentity();
 
     // Back off eight units to be able to view from the origin.
-    glTranslatef ( 0.0, 0.0, -16.0 );
+    glTranslatef ( 0.0, 0.0, -8.0 );
 
     // Rotate the plane of the elliptic
     // (rotate the model's plane about the x axis by fifteen degrees)
-    glRotatef( 0.0, 1.0, 0.0, 0.0 );
+    //glRotatef( 0.0, 1.0, 0.0, 0.0 );
 
     // Draw the sun	-- as a yellow, wireframe sphere
     glColor3f( 1.0, 1.0, 0.0 );
@@ -153,7 +153,7 @@ void Animate( void )
 
     // Draw the Earth
     // First position it around the sun. Use DayOfYear to determine its position.
-    glRotatef( 360.0 * DayOfYear / 365.0, 0.0, 1.0, 0.0 );
+    glRotatef( 360.0 * DayOfYear / 365.0, 0.0, 0.0, 0.0 );
     glTranslatef( 8.0, 0.0, 0.0 );
     glPushMatrix();						// Save matrix state
     // Second, rotate the earth on its axis. Use HourOfDay to determine its rotation.
@@ -169,6 +169,8 @@ void Animate( void )
     glColor3f( 0.3, 0.7, 0.3 );
     glutWireSphere( 0.1, 5, 5 );
 
+
+    glTranslatef( -8.0, 0.0, 0.0 );
     // Flush the pipeline, and swap the buffers
     glFlush();
     glutSwapBuffers();

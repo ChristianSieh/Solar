@@ -1,16 +1,5 @@
 #include "Main.h"
 
-struct cell 
-{
-	int id;
-	int x, y;
-	float min, max;
-	float value;
-	float step;
-	string info;
-	string format;
-};
-
 cell lookat[9] = {
     { 1, 180, 120, -5.0, 5.0, 0.0, 0.1,
     "Specifies the X position of the eye point.", "%.2f" },
@@ -40,7 +29,7 @@ cell perspective[4] = {
     "Specifies field of view in x direction (width/height).", "%.2f" },
     { 12, 300, 80, 0.1, 10.0, 1.0, 0.05,
     "Specifies distance from viewer to near clipping plane.", "%.1f" },
-    { 13, 360, 80, 0.1, 10.0, 30.0, 0.05,
+    { 13, 360, 80, 0.1, 10.0, 100.0, 0.05,
     "Specifies distance from viewer to far clipping plane.", "%.1f" },
 };
 
@@ -70,13 +59,25 @@ void Animate( void )
         currDay = currDay - ( ( int ) ( currDay / 365 ) ) * 365;
     }
 
-    // Clear the current matrix (Modelview)
+   // glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+
+  
+ 
+    //glMatrixMode(GL_PROJECTION);
+    //glLoadIdentity();
 
     gluLookAt(lookat[0].value, lookat[1].value, lookat[2].value,
         lookat[3].value, lookat[4].value, lookat[5].value,
         lookat[6].value, lookat[7].value, lookat[8].value); 
      glGetDoublev(GL_MODELVIEW_MATRIX, modelview); 
+
+   // glMatrixMode(GL_MODELVIEW);
+   // glLoadIdentity();
+   // glEnable(GL_DEPTH_TEST);
+
+
+    
 
     if(smooth)
         glShadeModel(GL_SMOOTH);
