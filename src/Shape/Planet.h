@@ -24,6 +24,8 @@ class Planet : public Orb
 	//constructor 
 	Planet( float r = 0.0, float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null", float c[4] = (float*)BlueA);
 	~Planet();
+	//void draw() const;
+	void drawOrbit() const;
 	void drawWireFrame() const;
 	void drawSolid() const;
 	int drawImg() const;

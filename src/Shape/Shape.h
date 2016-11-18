@@ -49,17 +49,20 @@ class Shape
     bool LoadBmpFile( const char* filename, int &NumRows, int &NumCols, unsigned char* &ImagePtr ) const;
 
     public:
-    float color[4];
+	GLUquadricObj* object;
 	string name;
+    	float color[4];
 	//constructor 
 	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null", float c[4] = (float*)(YellowA));
 	virtual ~Shape();
-    virtual void translate() const = 0;
-    virtual void rotate() const = 0;
-	virtual void draw() const = 0;
+        virtual void translate() const = 0;
+        virtual void rotate() const = 0;
+	virtual void draw( int i ) const = 0;
+	virtual void drawOrbit() const = 0;
 	virtual void drawWireFrame() const = 0;
 	virtual void drawSolid() const = 0;
 	virtual int drawImg() const = 0;
+	virtual void drawName() const = 0;
 	virtual void printAll() const = 0;
 	virtual void printName() const = 0;
 	virtual void printDate() const = 0;

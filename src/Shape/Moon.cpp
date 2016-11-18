@@ -43,4 +43,10 @@ Moon::~Moon()
 {
 }
 
-
+void Moon::drawOrbit() const
+{
+    glPushMatrix();
+    glTranslatef( -distance, 0.0, 0.0 );
+    glColor3fv( color );
+    glPopMatrix();
+}

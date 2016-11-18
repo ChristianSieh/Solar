@@ -32,6 +32,9 @@ Planet::Planet( float r, float di, float y, float da, string n, string i, float 
     img = i;
     type = "Planet"; 
     copy(c, c + 4, color);
+    object = gluNewQuadric();
+    gluQuadricNormals( object, GLU_SMOOTH );
+    gluQuadricDrawStyle( object, GLU_LINE );
 }
 
  /************************************************************************
@@ -43,6 +46,35 @@ Planet::Planet( float r, float di, float y, float da, string n, string i, float 
 Planet::~Planet()
 {
 }
+  /************************************************************************
+   Function: draw
+   Author:
+   Description: draws the orbit path of the planet
+   Parameters:
+ ************************************************************************/
+/*void Planet::draw() const
+{
+    glPushMatrix();
+    drawWireFrame();
+    drawOrbit();
+    glPopMatrix();
+} */
+
+/************************************************************************
+   Function: drawOrbit
+   Author:
+   Description: draws the orbit path of the planet
+   Parameters:
+ ************************************************************************/
+void Planet::drawOrbit() const
+{
+    glPushMatrix();
+    glTranslatef( -distance, 0.0, 0.0 ); 
+    glColor3fv( color );
+    gluCylinder( object, distance - .1, distance + .1, 0.0 , 10 * distance , 10 * distance );
+    glPopMatrix();
+}
+
 
  /************************************************************************
    Function: drawWireFrame
@@ -64,8 +96,8 @@ void Planet::drawWireFrame() const
     glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess ); 
 
     //set color
-    //glColor3fv(color);
-    glTranslatef( distance, 0.0, 0.0 );
+    glRotatef( 10.0, 0.0, 1.0, 0.0);
+    glTranslatef( distance, 0.0,  0.0 );
     //draw Sphere (radius, slices, stacks)
     glutWireSphere( radius, 50, 50 );
 }

@@ -34,7 +34,7 @@ extern bool texture;
 struct cell
 {
     int id;
-    int x, y;
+    float reset;
     float min, max;
     float value;
     float step;
@@ -65,6 +65,7 @@ void Key_left( void );
 void Key_right( void );
 void Key_minus( void );
 void Key_plus( void );
+void Key_space( void );
 void KeyPressFunc( unsigned char Key, int x, int y );
 void SpecialKeyFunc( int Key, int x, int y );
 void update(cell* cell, float y);

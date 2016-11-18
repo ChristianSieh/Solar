@@ -65,7 +65,7 @@ void display( void )
             gluSphere( object, 1.0, 32, 32 );
             break;
         case CYLINDER:
-            gluCylinder( object, 0.8, 1.2, 1.0, 32, 32 );
+            gluCylinder( object, 1.1, 1.2, 0.0, 32, 32 );
             break;
         case DISK:
             gluDisk( object, 0.2, 0.8, 32, 32 );

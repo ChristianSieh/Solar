@@ -61,19 +61,45 @@ void Orb::translate() const
  ************************************************************************/
 void Orb::rotate() const
 {
-    cerr << " rotate " << endl;
+    glRotatef(20.0, 0.0 , 1.0, 0.0);
 }
 
  /************************************************************************
-   Function: draw
+   Function: drawdraw
    Author: Charles Bonn and Christain Sieh
-   Description: draws orb
+   Description: draws name above the orb
    Parameters:
  ************************************************************************/
-void Orb::draw() const
+void Orb::draw(int i) const
 {
-    cerr << " draw " << endl;
+    glPushMatrix();
+    //glLoadIdentity();
+    switch( i )
+    {
+	case 1:
+    	    drawWireFrame();
+	    break;
+	case 2:
+	    drawSolid();
+	    break;
+    }
+    drawOrbit();
+    glPopMatrix();
 }
+
+
+
+ /************************************************************************
+   Function: drawName
+   Author: Charles Bonn and Christain Sieh
+   Description: draws name above the orb
+   Parameters:
+ ************************************************************************/
+void Orb::drawName() const
+{
+	    
+}
+
 
  /************************************************************************
    Function: printAll

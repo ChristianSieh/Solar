@@ -43,6 +43,18 @@ Sun::~Sun()
 {
 }
 
+
+ /************************************************************************
+   Function: drawOrbit
+   Author: Charles Bonn and Christian Sieh
+   Description: draws a wireframe orb
+   Parameters:
+ ************************************************************************/
+void Sun::drawOrbit() const
+{
+}
+
+
  /************************************************************************
    Function: drawWireframe
    Author: Charles Bonn and Christian Sieh

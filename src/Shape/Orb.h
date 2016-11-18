@@ -27,10 +27,11 @@ class Orb : public Shape
 	//constructor 
 	Orb( float r = 1.0, float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null");
 	~Orb();
-    void translate() const;
+        void translate() const;
 	void rotate() const;
-    void draw() const;
-    void printAll() const;
+	void draw( int i ) const ;
+	void drawName() const;
+        void printAll() const;
 	void printName() const;
 	void printDate() const;
 	void printRadius() const;

@@ -35,6 +35,9 @@ void KeyPressFunc( unsigned char Key, int x, int y )
             Key_s();
             break;
 
+        case 32:
+	    Key_space();
+	    break;
 	case 45:
 	    Key_minus();
 	    break;
@@ -117,6 +120,21 @@ void Key_s( void )
     singleStep = GL_TRUE;
     spinMode = GL_TRUE;
 }
+ /************************************************************************
+   Function:
+   Author:
+   Description:
+   Parameters:
+ ************************************************************************/
+void Key_space( void )
+{
+    for( int i = 0; i < 9; i++ )
+    {
+        lookat[i].value = lookat[i].reset;
+    }
+
+ 
+}
 
  /************************************************************************
    Function: Key_up
@@ -143,10 +161,10 @@ void Key_up( void )
 void Key_down( void )
 {
     //update camera position
-    float y = lookat[1].value - lookat[1].step;
+    float y = lookat[1].value - (lookat[1].step * lookat[2].value);
     update(&lookat[1], y);
     //update camra target
-    y = lookat[4].value - lookat[4].step;
+    y = lookat[4].value - ( lookat[4].step * lookat[2].value );
     update(&lookat[4], y);
 }
 

@@ -14,37 +14,39 @@
 /*********************** global symbolic constants *********************/
 // look at controls the camra
 cell lookat[9] = {
-    { 1, 180, 120, -2300.0, 2300.0, 0.0, 0.5,
+    { 1, 0.0, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the X position of the eye point.", "%.2f" },
-    { 2, 240, 120, -2300.0, 2300.0, 0.0, 0.5,
+    { 2, 0.0, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the Y position of the eye point.", "%.2f" },
-    { 3, 300, 120, 28.0, 3500.0, 3000.0, 0.5,
+    { 3, 3000.0, 28.0, 3500.0, 3000.0, 0.5,
     "Specifies the Z position of the eye point.", "%.2f" },
-    { 4, 180, 160, -2300.0, 3000.0, 0.0, 0.5,
+    { 4, 0.0, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the X position of the reference point.", "%.2f" },
-    { 5, 240, 160, -5.0, 5.0, 0.0, 0.1,
+    { 5, 0.0, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the Y position of the reference point.", "%.2f" },
-    { 6, 300, 160, -5.0, 5.0, 0.0, 0.1,
+    { 6, 0.0, -5.0, 5.0, 0.0, 0.1,
     "Specifies the Z position of the reference point.", "%.2f" },
-    { 7, 180, 200, -2.0, 2.0, 0.0, 0.1,
+    { 7, 0.0, -2.0, 2.0, 0.0, 0.1,
     "Specifies the X direction of the up vector.", "%.2f" },
-    { 8, 240, 200, -2.0, 2.0, 1.0, 0.1,
+    { 8, 1.0, -2.0, 2.0, 1.0, 0.1,
     "Specifies the Y direction of the up vector.", "%.2f" },
-    { 9, 300, 200, -2.0, 2.0, 0.0, 0.1,
+    { 9, 0.0, -2.0, 2.0, 0.0, 0.1,
     "Specifies the Z direction of the up vector.", "%.2f" },
 };
 
 // perspective controls the view of the camera
 cell perspective[4] = {
-    { 10, 180, 80, 60.0, 180.0, 60.0, 1.0,
+    { 10, 60, 60.0, 180.0, 90.0, 1.0,
         "Specifies field of view angle (in degrees) in y direction.", "%.1f" },
-    { 11, 240, 80, -3.0, 3.0, 1.0, 0.01,
+    { 11, 1.0, -3.0, 3.0, 1.0, 0.01,
     "Specifies field of view in x direction (width/height).", "%.2f" },
-    { 12, 300, 80, 0.1, 10.0, 1.0, 0.05,
+    { 12, 1.0, 0.1, 10.0, 1.0, 0.05,
     "Specifies distance from viewer to near clipping plane.", "%.1f" },
-    { 13, 360, 80, 0.1, 10.0, 3800.0, 0.05,
+    { 13, 3800.0, 0.1, 10.0, 3800.0, 0.05,
     "Specifies distance from viewer to far clipping plane.", "%.1f" },
 };
+
+
 
 GLdouble projection[16], modelview[16];
 //animate booleans
@@ -52,6 +54,7 @@ GLenum spinMode = GL_TRUE;
 GLenum singleStep = GL_FALSE;
 GLenum viewMode = GL_TRUE;
 
+int op;
 float HourOfDay = 0.0;
 float currDay = 0.0;
 float AnimateIncrement = 24.0; 
@@ -83,56 +86,42 @@ void Animate( void )
    // glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
-  
- 
-    //glMatrixMode(GL_PROJECTION);
-    //glLoadIdentity();
-
+    // set camera 
     gluLookAt(lookat[0].value, lookat[1].value, lookat[2].value,
         lookat[3].value, lookat[4].value, lookat[5].value,
         lookat[6].value, lookat[7].value, lookat[8].value); 
-     glGetDoublev(GL_MODELVIEW_MATRIX, modelview); 
+    // glGetDoublev(GL_MODELVIEW_MATRIX, modelview); 
 
-   // glMatrixMode(GL_MODELVIEW);
-   // glLoadIdentity();
-   // glEnable(GL_DEPTH_TEST);
 
     if(smooth)
         glShadeModel(GL_SMOOTH);
     else
         glShadeModel(GL_FLAT);
-
+// cases
+// 1 - wireframe
+// 2 - solid
     if(texture)
     {
         glEnable( GL_TEXTURE_2D );
-
-        for(auto & obj: shapeList)
-        {
-            int err = obj->drawImg();
-            if(err == -1)
-            {
-                obj->drawSolid();
-            }
-        }
+        op = 2;
     }
     else
     {
         if(solid)
         {
-            for(auto & obj: shapeList)
-            {
-                obj->drawSolid();
-            }
+            op = 2;
         }
         else
         {
-            for(auto & obj: shapeList)
-            {
-	            obj->drawWireFrame();
-            }
+	    op = 1;
         }
     }
 
+    // draw objects
+    for(auto & obj: shapeList)
+    {
+	obj->draw(op);
+    }
     // Flush the pipeline, and swap the buffers
     glFlush();
     glutSwapBuffers();
@@ -167,7 +156,7 @@ void ResizeWindow( int w, int h )
     //change the perspective of the camera
     gluPerspective(perspective[0].value, perspective[1].value, 
         perspective[2].value, perspective[3].value);
-    glGetDoublev(GL_PROJECTION_MATRIX, projection);
+    glGetDoublev(GL_PROJECTION_MATRIX, projection); 
 
     // Select the Modelview matrix
     glMatrixMode( GL_MODELVIEW );
