@@ -82,13 +82,16 @@ void SpecialKeyFunc( int Key, int x, int y )
 void Key_r( void )
 {
     if ( singleStep )
-    {			// If ending single step mode
+    {			
+        // If ending single step mode
         singleStep = GL_FALSE;
-        spinMode = GL_TRUE;		// Restart animation
+        // Restart animation
+        spinMode = GL_TRUE;		
     }
     else
     {
-        spinMode = !spinMode;	// Toggle animation on and off.
+        // Toggle animation on and off.
+        spinMode = !spinMode;	
     }
 }
 

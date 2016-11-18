@@ -67,7 +67,7 @@ int main( int argc, char** argv )
 {
     // Need to double buffer for animation
     glutInit( &argc, argv );
-    glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH );
+    glutInitDisplayMode( GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH | GLUT_MULTISAMPLE );
 
     // Create and position the graphics window
     glutInitWindowPosition( 0, 0 );

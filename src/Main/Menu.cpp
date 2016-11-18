@@ -37,6 +37,7 @@ void createMenu()
     glutAddSubMenu("Planets", planetMenu);
     glutAddMenuEntry("Reset Camera", value++);
     glutAddMenuEntry("Reset Solar System", value++);
+    glutAddMenuEntry("Help", value++);
     glutAddMenuEntry("Exit Program", value++);
 
     glutAttachMenu(GLUT_RIGHT_BUTTON);
@@ -93,8 +94,13 @@ void MainMenuHandler( int item )
             
             break;
 
-        // Exit
+        // Help
         case 9:
+
+            break;
+
+        // Exit
+        case 10:
             exit( 0 );
             break;
 

@@ -65,6 +65,8 @@ float AnimateIncrement = 24.0;
  ************************************************************************/
 void Animate( void )
 {
+    glEnable(GL_MULTISAMPLE);
+
     // Clear the redering window
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
@@ -142,6 +144,7 @@ void Animate( void )
 
     glutPostRedisplay();		// Request a re-draw for animation purposes
 }
+
  /************************************************************************
    Function: ResizeWindow
    Author: Charles Bonn and Christian Sieh

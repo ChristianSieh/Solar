@@ -67,7 +67,7 @@ void Planet::drawWireFrame() const
     //glColor3fv(color);
     glTranslatef( distance, 0.0, 0.0 );
     //draw Sphere (radius, slices, stacks)
-    glutWireSphere( radius, 30, 30 );
+    glutWireSphere( radius, 50, 50 );
 }
 
  /************************************************************************
@@ -93,7 +93,7 @@ void Planet::drawSolid() const
     //glColor3fv(color);
     glTranslatef( distance, 0.0, 0.0 );
     //draw Sphere (radius, slices, stacks)
-    glutSolidSphere( radius, 30, 30 );
+    glutSolidSphere( radius, 50, 50 );
 }
 
  /************************************************************************
