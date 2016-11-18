@@ -16,6 +16,9 @@ const float Blue[]    = { 0.0, 0.0, 1.0 };
 const float Magenta[] = { 1.0, 0.0, 1.0 };
 const float Cyan[]    = { 0.0, 1.0, 1.0 };
 
+const float YellowA[] = { 1.0, 1.0, 0.0, 1.0 };
+const float BlueA[]    = { 0.0, 0.0, 1.0, 1.0 };
+
 class Shape
 {
     private:
@@ -34,10 +37,10 @@ class Shape
     bool LoadBmpFile( const char* filename, int &NumRows, int &NumCols, unsigned char* &ImagePtr ) const;
 
     public:
-    float color[3];
+    float color[4];
 	string name;
 	//constructor 
-	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null", float c[3] = (float*)(Yellow));
+	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null", float c[4] = (float*)(YellowA));
 	virtual ~Shape();
     virtual void translate() const = 0;
     virtual void rotate() const = 0;

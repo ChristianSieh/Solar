@@ -159,18 +159,7 @@ Ref:    Angel, OpenGL Primer, 2008.
 
 // set up light and material properties
 void lightModel()
-{
-    // specify material reflectivity
-    GLfloat mat_ambient[] = { 0.0, 0.0, 1.0, 1.0 };     // blue ambient reflectivity
-    GLfloat mat_diffuse[] = { 0.0, 1.0, 0.0, 1.0 };     // green diffuse reflectivity
-    GLfloat mat_specular[] = { 1.0, 0.0, 0.0, 1.0 };    // red highlights
-    GLfloat mat_shininess = { 100.0 };
-    
-    glMaterialfv( GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient );
-    glMaterialfv( GL_FRONT_AND_BACK, GL_DIFFUSE, mat_diffuse );
-    glMaterialfv( GL_FRONT_AND_BACK, GL_SPECULAR, mat_specular );
-    glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess );
-    
+{    
     // specify light source properties
     GLfloat light_position[] = { 0.0, 0.0, 0.0, 1.0 };
     GLfloat light_ambient[] = { 0.4, 0.4, 0.4, 1.0 };       // ambient light
@@ -183,7 +172,6 @@ void lightModel()
     glLightfv( GL_LIGHT0, GL_DIFFUSE, light_diffuse );
     glLightfv( GL_LIGHT0, GL_SPECULAR, light_specular );
 
+    glEnable(GL_LIGHTING);
     glCullFace( GL_BACK );
-
-    glColor3f ( 0.8, 0.8, 0.0 );            // draw in yellow
 }

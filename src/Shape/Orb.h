@@ -20,9 +20,6 @@ class Orb : public Shape
     void translate() const;
 	void rotate() const;
     void draw() const;
-	void drawWireFrame() const;
-	void drawSolid() const;
-	int drawImg() const;
     void printAll() const;
 	void printName() const;
 	void printDate() const;
