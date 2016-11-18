@@ -63,6 +63,8 @@ void Key_up( void );
 void Key_down( void );
 void Key_left( void );
 void Key_right( void );
+void Key_minus( void );
+void Key_plus( void );
 void KeyPressFunc( unsigned char Key, int x, int y );
 void SpecialKeyFunc( int Key, int x, int y );
 void update(cell* cell, float y);

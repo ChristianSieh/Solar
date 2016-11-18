@@ -16,11 +16,11 @@
 cell lookat[9] = {
     { 1, 180, 120, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the X position of the eye point.", "%.2f" },
-    { 2, 240, 120, -5.0, 5.0, 0.0, 0.1,
+    { 2, 240, 120, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the Y position of the eye point.", "%.2f" },
-    { 3, 300, 120, -5.0, 5.0, 28.0, 0.1,
+    { 3, 300, 120, 28.0, 3500.0, 3000.0, 0.5,
     "Specifies the Z position of the eye point.", "%.2f" },
-    { 4, 180, 160, -2300.0, 2300.0, 0.0, 0.5,
+    { 4, 180, 160, -2300.0, 3000.0, 0.0, 0.5,
     "Specifies the X position of the reference point.", "%.2f" },
     { 5, 240, 160, -5.0, 5.0, 0.0, 0.1,
     "Specifies the Y position of the reference point.", "%.2f" },
@@ -36,13 +36,13 @@ cell lookat[9] = {
 
 // perspective controls the view of the camera
 cell perspective[4] = {
-    { 10, 180, 80, 1.0, 179.0, 60.0, 1.0,
+    { 10, 180, 80, 60.0, 180.0, 60.0, 1.0,
         "Specifies field of view angle (in degrees) in y direction.", "%.1f" },
     { 11, 240, 80, -3.0, 3.0, 1.0, 0.01,
     "Specifies field of view in x direction (width/height).", "%.2f" },
     { 12, 300, 80, 0.1, 10.0, 1.0, 0.05,
     "Specifies distance from viewer to near clipping plane.", "%.1f" },
-    { 13, 360, 80, 0.1, 10.0, 100.0, 0.05,
+    { 13, 360, 80, 0.1, 10.0, 3800.0, 0.05,
     "Specifies distance from viewer to far clipping plane.", "%.1f" },
 };
 

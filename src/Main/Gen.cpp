@@ -11,6 +11,8 @@
  ************************************************************************/
 #include "Gen.h"
 
+
+float sunR = 40.0;
 /************************************************************************
    Function: generate
    Author: Charles Bonn and Christian Sieh
@@ -41,7 +43,7 @@ void generate(vector<Shape*> &shapeList)
 void genSun(vector<Shape*> &shapeList)
 {
     float color[] = {0.992156863, 0.945098039, 0.466666667, 1.0};
-    shapeList.push_back( new Sun( 10.0, 25,  "Sun", "../src/PlanetImg/sun.bmp", color ) );
+    shapeList.push_back( new Sun( sunR , 25,  "Sun", "../src/PlanetImg/sun.bmp", color ) );
     //apeList.push_back( new Sun( 696000, 25,  "Sun", "none" ) );
 }
 
