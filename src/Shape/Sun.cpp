@@ -67,6 +67,7 @@ void Sun::drawWireFrame() const
     //GLfloat mat_ambient[] = { 1.0, 1.0, 0.0, 1.0 };
     GLfloat mat_diffuse[] = { 1.0, 0.549019608, 0.0, 1.0 };
     GLfloat mat_specular[] = { 1.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_emission[] = { 1.0, 1.0, 0.0, 1.0 };
     GLfloat mat_shininess = { 100.0 };
     
     glMaterialfv( GL_FRONT_AND_BACK, GL_AMBIENT, color );

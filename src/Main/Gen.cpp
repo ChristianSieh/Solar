@@ -56,7 +56,7 @@ void genSun(vector<Shape*> &shapeList)
  ************************************************************************/
 void genMercury(vector<Shape*> &shapeList)
 {
-    float color[] = {0.980392157, 0.97254902, 0.949019608, 1.0};
+    float color[] = {0.454901961, 0.454901961, 0.454901961, 1.0};
     shapeList.push_back( new Planet( 2439, 58, 88, 1416, "Mercury", "../src/PlanetImg/mercury.bmp", color ) );
 }
 
@@ -95,7 +95,7 @@ void genEarth(vector<Shape*> &shapeList)
  ************************************************************************/
 void genMars(vector<Shape*> &shapeList)
 {
-    float color[] = {0.941176471, 0.776470588, 0.11372549, 1.0};
+    float color[] = {0.752941176, 0.360784314, 0.078431373, 1.0};
     shapeList.push_back( new Planet( 3394, 228, 687, 24.6, "Mars", "../src/PlanetImg/mars.bmp", color ) );
 }
 
@@ -108,7 +108,7 @@ void genMars(vector<Shape*> &shapeList)
  ************************************************************************/
 void genJupiter(vector<Shape*> &shapeList)
 {
-    float color[] = {0.992156863, 0.780392157, 0.568627451, 1.0};
+    float color[] = {0.670588235, 0.592156863, 0.462745098, 1.0};
     shapeList.push_back( new Planet( 71398, 779, 4332, 9.8, "Jupiter", "../src/PlanetImg/jupiter.bmp", color ) );
 }
 
@@ -121,7 +121,7 @@ void genJupiter(vector<Shape*> &shapeList)
  ************************************************************************/
 void genSaturn(vector<Shape*> &shapeList)
 {
-    float color[] = {0.878431373, 0.780392157, 0.133333333, 1.0};
+    float color[] = {0.835294118, 0.694117647, 0.466666667, 1.0};
     shapeList.push_back( new Planet( 60270, 1424, 10761, 10.2, "Saturn", "../src/PlanetImg/saturn.bmp", color ) );
 }
 
@@ -134,7 +134,7 @@ void genSaturn(vector<Shape*> &shapeList)
  ************************************************************************/
 void genUranus(vector<Shape*> &shapeList)
 {
-    float color[] = {0.862745098, 0.945098039, 0.960784314, 1.0};
+    float color[] = {0.588235294, 0.898039216, 0.91372549, 1.0};
     shapeList.push_back( new Planet( 25550, 2867, 30682, 15.5, "Uranus", "../src/PlanetImg/uranus.bmp", color ) );
 }
 
@@ -147,6 +147,6 @@ void genUranus(vector<Shape*> &shapeList)
  ************************************************************************/
 void genNeptune(vector<Shape*> &shapeList)
 {
-    float color[] = {0.223529412, 0.71372549, 0.968627451, 1.0};
+    float color[] = {0.274509804, 0.423529412, 1.0, 1.0};
     shapeList.push_back( new Planet( 24750, 4492, 60195, 15.8, "Neptune", "../src/PlanetImg/neptune.bmp", color ) );
 }
