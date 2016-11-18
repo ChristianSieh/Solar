@@ -1,36 +1,19 @@
-/*
-* orbit.cpp
-*
-* Program to demonstrate how to use a local
-* coordinate method to position parts of a
-* model in relation to other model parts.
-*
-* Draws a simple solar system, with a sun, planet and moon.
-* Based on sample code from the OpenGL programming guide
-* by Woo, Neider, Davis.  Addison-Wesley.
-*
-* Author: Samuel R. Buss
-*
-* Software accompanying the book
-* 3D Computer Graphics: A Mathematical Introduction with OpenGL,
-* by S. Buss, Cambridge University Press, 2003.
-*
-* Software is "as-is" and carries no warranty.  It may be used without
-* restriction, but if you modify it, please change the filenames to
-* prevent confusion between different versions.
-*
-* Bug reports: Sam Buss, sbuss@ucsd.edu.
-* Web page: http://math.ucsd.edu/~sbuss/MathCG
-*
-* USAGE:
-*    Press "r" key to toggle (off and on) running the animation
-*    Press "s" key to single-step animation
-*    The up and down array keys control the time step used in the animation rate.
-*    Each key press multiplies or divides the times by a factor of two.
-*    Press ESCAPE to exit.
-*/
-
-// JMW: Minor modifications for CSC433/533 Computer Graphics, Fall 2016.
+/************************************************************************
+   Program: Solar
+   Author: Charles Bonn and Christian Sieh
+   Class: CSC433 Computer Graphics
+   Instructor: John Weiss
+   Date:
+   Description:    (program requirements)
+   Input: None
+   Output:
+   Compilation instructions:
+   Usage:
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 
 
 #include "Gen.h"
@@ -38,6 +21,7 @@
 
 #include <typeinfo>
 
+/*********************** global symbolic constants *********************/
 //shape 
 vector<Shape*> shapeList;
 
@@ -49,11 +33,16 @@ bool solid = false;
 bool smooth = false;
 bool texture = false;
 
-// function prototypes
+/*********************** function prototypes ***************************/
 void OpenGLInit( void );
 
 
-// Initialize OpenGL's rendering modes
+/************************************************************************
+   Function: OpenGLInit
+   Author: Charles Bonn and Christian Sieh
+   Description: initilization of opengl
+   Parameters:
+ ************************************************************************/
 void OpenGLInit( void )
 {
     glShadeModel( GL_FLAT );
@@ -66,8 +55,14 @@ void OpenGLInit( void )
 
 }
 
-// Main routine
-// Set up OpenGL, hook up callbacks, and start the main loop
+/************************************************************************
+   Function: main
+   Author: Charles Bonn and Christian Sieh
+   Description: main loop and set up of opengl function call backs
+   Parameters: 
+	argc - number of arguments
+	argv - argument list
+ ************************************************************************/
 int main( int argc, char** argv )
 {
     // Need to double buffer for animation
@@ -79,23 +74,18 @@ int main( int argc, char** argv )
     glutInitWindowSize( 600, 360 );
     glutCreateWindow( "Solar System Demo" );
 
+    //set planets
     generate(shapeList);
 
     // Initialize OpenGL.
     OpenGLInit();
 
-    // Set up callback functions for key presses
+    // Set up callback functions f
     glutKeyboardFunc( KeyPressFunc );
     glutSpecialFunc( SpecialKeyFunc );
-
-    // Set up the callback function for resizing windows
     glutReshapeFunc( ResizeWindow );
-
-    // Callback for graphics image redrawing
     glutDisplayFunc( Animate );
-
     createMenu();
-
     lightModel();
 
     // Start the main loop.  glutMainLoop never returns.

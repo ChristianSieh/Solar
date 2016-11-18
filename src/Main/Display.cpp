@@ -1,5 +1,18 @@
+ /************************************************************************
+   Program: Solar
+   Author: Charles Bonn and Christian Sieh
+   Date:
+   Description:    (program requirements)
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
+
 #include "Main.h"
 
+/*********************** global symbolic constants *********************/
+// look at controls the camra
 cell lookat[9] = {
     { 1, 180, 120, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the X position of the eye point.", "%.2f" },
@@ -21,7 +34,7 @@ cell lookat[9] = {
     "Specifies the Z direction of the up vector.", "%.2f" },
 };
 
-
+// perspective controls the view of the camera
 cell perspective[4] = {
     { 10, 180, 80, 1.0, 179.0, 60.0, 1.0,
         "Specifies field of view angle (in degrees) in y direction.", "%.1f" },
@@ -34,7 +47,7 @@ cell perspective[4] = {
 };
 
 GLdouble projection[16], modelview[16];
-
+//animate booleans
 GLenum spinMode = GL_TRUE;
 GLenum singleStep = GL_FALSE;
 GLenum viewMode = GL_TRUE;
@@ -43,8 +56,13 @@ float HourOfDay = 0.0;
 float currDay = 0.0;
 float AnimateIncrement = 24.0; 
 
-
-// Animate() handles the animation and the redrawing of the graphics window contents.
+/************************************************************************
+   Function: Animate
+   Author:
+   Description: main display loop of the program. handles redrawing the window
+	and the graphical contents
+   Parameters: void
+ ************************************************************************/
 void Animate( void )
 {
     // Clear the redering window
@@ -124,7 +142,14 @@ void Animate( void )
 
     glutPostRedisplay();		// Request a re-draw for animation purposes
 }
-
+ /************************************************************************
+   Function: ResizeWindow
+   Author: Charles Bonn and Christian Sieh
+   Description: Handles the resizing of the graphical window
+   Parameters:
+	int w - width of the window
+	int h - height of the window
+ ************************************************************************/
 void ResizeWindow( int w, int h )
 {
     h = ( h == 0 ) ? 1 : h;
@@ -136,7 +161,7 @@ void ResizeWindow( int w, int h )
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
 
-    //change
+    //change the perspective of the camera
     gluPerspective(perspective[0].value, perspective[1].value, 
         perspective[2].value, perspective[3].value);
     glGetDoublev(GL_PROJECTION_MATRIX, projection);
@@ -149,15 +174,12 @@ void ResizeWindow( int w, int h )
     //glEnable(GL_LIGHTING);
     //glEnable(GL_LIGHT0); 
 }
-
-/*
-Author: John M. Weiss, Ph.D.
-Class:  CSC433/533 Computer Graphics
-Date:   Fall 2016
-Ref:    Angel, OpenGL Primer, 2008.
-*/
-
-// set up light and material properties
+ /************************************************************************
+   Function: lightModel
+   Author: Charles Bonn and Christian Sieh
+   Description: set up and handles light and material properties
+   Parameters:
+ ************************************************************************/
 void lightModel()
 {    
     // specify light source properties

@@ -1,3 +1,14 @@
+ /************************************************************************
+   Program: Solar 
+   Author: Charles Bonn and Christian Sieh
+   Date:
+   Description:    Header for shape class
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
+
 #ifndef SHAPE_H
 #define SHAPE_H
 
@@ -8,6 +19,7 @@
 
 using namespace std;
 
+// color constants
 const float White[]   = { 1.0, 1.0, 1.0 };
 const float Yellow[]  = { 1.0, 1.0, 0.0 };
 const float Red[]     = { 1.0, 0.0, 0.0 };

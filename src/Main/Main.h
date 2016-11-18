@@ -1,3 +1,13 @@
+ /************************************************************************
+   Program: Solar 
+   Author: Charles Bonn and Christian Sieh
+   Date:
+   Description: Main head for the program
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -20,7 +30,7 @@ extern bool solid;
 extern bool smooth;
 extern bool texture;
 
-// View Info
+// View Info cell
 struct cell
 {
     int id;

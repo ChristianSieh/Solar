@@ -1,6 +1,27 @@
+ /************************************************************************
+   Program: Solar 
+   Author: Charles Bonn and Christian Sieh
+   Date:
+   Description:    Planet Class
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 
 #include "Planet.h"
 
+ /************************************************************************
+   Function: Planet Constructor
+   Author: Charles Bonn and Christian Sieh
+   Description: Constructor for planet
+   Parameters:
+	float r - float
+	float di - distance
+	float y - total year
+	float da - total year
+	float c[] - color properties
+ ************************************************************************/
 Planet::Planet( float r, float di, float y, float da, string n, string i, float c[4])
 {
     radius = r / 1000;
@@ -13,10 +34,22 @@ Planet::Planet( float r, float di, float y, float da, string n, string i, float 
     copy(c, c + 4, color);
 }
 
+ /************************************************************************
+   Function: Planet deconstuctor
+   Author: Charles Bonn and Christian Sieh
+   Description: Planet deconstuctor
+   Parameters:
+ ************************************************************************/
 Planet::~Planet()
 {
 }
 
+ /************************************************************************
+   Function: drawWireFrame
+   Author: Charles Bonn and Christian Sieh
+   Description: draws the wireframe
+   Parameters:
+ ************************************************************************/
 void Planet::drawWireFrame() const
 {
     // specify material reflectivity
@@ -37,6 +70,12 @@ void Planet::drawWireFrame() const
     glutWireSphere( radius, 30, 30 );
 }
 
+ /************************************************************************
+   Function: drawSolid
+   Author: Charles Bonn and Christian Sieh
+   Description: draws a solid planet
+   Parameters:
+ ************************************************************************/
 void Planet::drawSolid() const
 {
     // specify material reflectivity
@@ -57,6 +96,12 @@ void Planet::drawSolid() const
     glutSolidSphere( radius, 30, 30 );
 }
 
+ /************************************************************************
+   Function: drawImg
+   Author: Charles Bonn and Christian Sieh
+   Description: draws the textmaped image
+   Parameters:
+ ************************************************************************/
 int Planet::drawImg() const
 {
     // read texture map from BMP file

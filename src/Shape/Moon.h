@@ -1,4 +1,13 @@
-#ifndef MOON_H
+ /************************************************************************
+   Program: Solar 
+   Author: Charles Bonn and Christian Sieh
+   Date:
+   Description:    Header for the moon class
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/#ifndef MOON_H
 #define MOON_H
 
 #include <GL/freeglut.h>

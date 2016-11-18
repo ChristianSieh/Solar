@@ -1,5 +1,21 @@
+ /************************************************************************
+   Program: Solar 
+   Author: Charles Bonn and Christian Sieh
+   Date: 
+   Description:    Shape main class
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 #include "Shape.h"
 
+ /************************************************************************
+   Function: Shape constructor
+   Author: Charles Bonn and Christian Sieh
+   Description: Shape Constructor
+   Parameters:
+ ************************************************************************/
 Shape::Shape( float di, float y, float da, string n, string i, float c[4])
 {
     distance = di;
@@ -11,18 +27,35 @@ Shape::Shape( float di, float y, float da, string n, string i, float c[4])
     copy(c, c + 4, color);
 }
 
+ /************************************************************************
+   Function: shape Deconstructor
+   Author: Charles Bonn and Christian Sieh
+   Description: shape deconstructor
+   Parameters:
+ ************************************************************************/
 Shape::~Shape()
 {
 }
 
-// Rows are word aligned
+ /************************************************************************
+   Function: getNumBytesPerRow
+   Author: Charles Bonn And christian Sieh
+   Description: Row are word aligned
+   Parameters:
+	int NumCols - number of columns
+ ************************************************************************/
 inline int Shape::GetNumBytesPerRow( int NumCols ) const
 {
     return ( ( 3 * NumCols + 3 ) >> 2 ) << 2;
 }
 
-
-// read a 16-bit integer from the input file
+ /************************************************************************
+   Function: readShort
+   Author: Charles Bonn and Christian Sieh
+   Description: read a 16-bit integer from the input file
+   Parameters:
+	FILE* infile - the input file
+ ************************************************************************/
 short Shape::readShort( FILE* infile ) const
 {
     unsigned char lowByte, hiByte;
@@ -36,7 +69,12 @@ short Shape::readShort( FILE* infile ) const
     return ret;
 }
 
-// read a 32-bit integer from the input file
+ /************************************************************************
+   Function: readLong 
+   Author: charles Bonn and Christian Sieh
+   Description: read a 32-bit integer from the input file
+   Parameters:
+ ************************************************************************/
 int Shape::readLong( FILE* infile ) const
 {
     unsigned char byte0, byte1, byte2, byte3;
@@ -56,7 +94,14 @@ int Shape::readLong( FILE* infile ) const
     return ret;
 }
 
-// skip over given number of bytes in input file
+ /************************************************************************
+   Function: skipChars
+   Author: Charles Bonn and Christian Sieh
+   Description: skip over given number of bytes in input file
+   Parameters:
+	FILE* infile - input file
+	int numChars - number of chars
+ ************************************************************************/
 void Shape::skipChars( FILE* infile, int numChars ) const
 {
     for ( int i = 0; i < numChars; i++ )
@@ -71,7 +116,16 @@ void Shape::skipChars( FILE* infile, int numChars ) const
  *  Return true for success, false for failure.
  *  Author: Sam Buss December 2001.
  **********************************************************************/
-
+ /************************************************************************
+   Function: LoadBMPFile
+   Author: Charles Bonn and Charles Bonn
+   Description: Loads a bitmap file
+   Parameters:
+	char* filename - file
+	int &numrows - number of rows
+	int &numcols - number of colums,
+	unsigned char 8 &imageprt - image
+ ************************************************************************/
 bool Shape::LoadBmpFile( const char* filename, int &NumRows, int &NumCols, unsigned char* &ImagePtr ) const
 {
     FILE* infile = fopen( filename, "rb" );		// Open for reading binary data

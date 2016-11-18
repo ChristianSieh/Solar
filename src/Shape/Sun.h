@@ -1,3 +1,13 @@
+ /************************************************************************
+   Program: Solar
+   Author: Charles Bonn and Christian Sieh
+   Date: 
+   Description:    Sun object
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 #ifndef SUN_H
 #define SUN_H
 

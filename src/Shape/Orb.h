@@ -1,3 +1,13 @@
+ /************************************************************************
+   Program: Solar 
+   Author: Charles Bonn and Christian Sieh
+   Date:
+   Description:    Header file for the orb class
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 #ifndef ORB_H
 #define ORB_H
 

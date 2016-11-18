@@ -1,5 +1,26 @@
+ /************************************************************************
+   Program: Solar 
+   Author: Charles Bonn and Christian Sieh
+   Date: 
+   Description:    Sun object class
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 #include "Sun.h"
 
+ /************************************************************************
+   Function: sun constructor
+   Author: Charles Bonn and Christian Sieh
+   Description: sun constructor
+   Parameters:
+	float r - radius
+	float d - distance
+	string n - name
+	string i - image name
+	float c[] - color
+ ************************************************************************/
 Sun::Sun( float r, float d, string n, string i, float c[4] )
 {
     radius = r;
@@ -12,10 +33,22 @@ Sun::Sun( float r, float d, string n, string i, float c[4] )
     copy(c, c + 4, color);
 }
 
+ /************************************************************************
+   Function: sun constructor
+   Author: Charles Bonn and Christian Sieh
+   Description: sun deconstructor
+   Parameters:
+ ************************************************************************/
 Sun::~Sun()
 {
 }
 
+ /************************************************************************
+   Function: drawWireframe
+   Author: Charles Bonn and Christian Sieh
+   Description: draws a wireframe orb
+   Parameters:
+ ************************************************************************/
 void Sun::drawWireFrame() const
 {
     // specify material reflectivity
@@ -37,6 +70,12 @@ void Sun::drawWireFrame() const
     glutWireSphere( radius, 30, 30 );
 }
 
+ /************************************************************************
+   Function: drawSolid
+   Author: Charles Bonn and Christian Sieh
+   Description: draws a solid orb
+   Parameters:
+ ************************************************************************/
 void Sun::drawSolid() const
 {
     // specify material reflectivity
@@ -58,6 +97,12 @@ void Sun::drawSolid() const
     glutSolidSphere( radius, 30, 30 );
 }
 
+ /************************************************************************
+   Function: drawImg
+   Author: Charles Bonn and Chrisitan Sieh
+   Description: draws a textmap img
+   Parameters:
+ ************************************************************************/
 int Sun::drawImg() const
 {
     // read texture map from BMP file

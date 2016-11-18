@@ -1,3 +1,13 @@
+ /************************************************************************
+   Program: Solar 
+   Author: Charles Bonn and Christain Sieh
+   Date: 
+   Description: Header file for gen.cpp
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 #ifndef GEN_H
 #define GEN_H
 
@@ -9,6 +19,7 @@
 #include <iostream>
 #include <vector>
 
+//shape class includes
 #include "../Shape/Shape.h"
 #include "../Shape/Orb.h"
 #include "../Shape/Sun.h"
@@ -17,6 +28,7 @@
 
 using namespace std;
 
+/*********************** function prototypes ***************************/
 void generate(vector<Shape*> &shapeList);
 void genSun(vector<Shape*> &shapeList);
 void genMercury(vector<Shape*> &shapeList);

@@ -1,5 +1,21 @@
+ /************************************************************************
+   Program: Solar 
+   Author: Charles Bonn and Christian Sieh
+   Date:
+   Description:   Handles the menu creation for the program
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 #include "Main.h"
 
+ /************************************************************************
+   Function: createMenu
+   Author: Charles Bonn and Christian Sieh
+   Description: creates the right click menu for the program
+   Parameters:
+ ************************************************************************/
 void createMenu()
 {       
     int value = 1;
@@ -26,6 +42,13 @@ void createMenu()
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
+ /************************************************************************
+   Function: MainMenuHandler
+   Author: Charles Bonn and Christian Sieh
+   Description: Handles Menu options
+   Parameters:
+	int item - the menu option pressed
+ ************************************************************************/
 void MainMenuHandler( int item )
 {
     switch ( item )
@@ -82,6 +105,13 @@ void MainMenuHandler( int item )
     }
 }
 
+ /************************************************************************
+   Function: PlanetMenuHandler
+   Author: Charles Bonn and Christian Sieh
+   Description: Handles the planet subment
+   Parameters:
+	int item - item being selected
+ ************************************************************************/
 void PlanetMenuHandler( int item )
 {
     switch ( item )
