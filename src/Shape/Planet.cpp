@@ -84,10 +84,12 @@ void Planet::drawWireFrame( double day, double year) const
 
     //set color
     glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
-    //glRotated( 90.0, 0.0, 0.0, 1.0);
     glTranslatef( distance, 0.0,  0.0 );
-    //draw Sphere (radius, slices, stacks)
+
+    glPushMatrix();
+    glRotatef( 360 * day / totalDay, 0.0, 0.0, 1.0);
     glutWireSphere( radius, 50, 50 );
+    glPopMatrix();
 }
 
  /************************************************************************
