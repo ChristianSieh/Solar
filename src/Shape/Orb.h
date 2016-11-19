@@ -29,7 +29,7 @@ class Orb : public Shape
 	~Orb();
         void translate() const;
 	void rotate() const;
-	void draw( int i ) const ;
+	void draw( int i, double day, double year ) const ;
 	void drawName() const;
         void printAll() const;
 	void printName() const;

@@ -25,7 +25,7 @@ class Planet : public Orb
 	Planet( float r = 0.0, float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null", float c[4] = (float*)BlueA);
 	~Planet();
 	void drawOrbit() const;
-	void drawWireFrame() const;
+	void drawWireFrame(double day, double year) const;
 	void drawSolid() const;
 	int drawImg() const;
 };

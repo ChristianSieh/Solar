@@ -63,7 +63,7 @@ void Sun::drawOrbit() const
    Description: draws a wireframe orb
    Parameters:
  ************************************************************************/
-void Sun::drawWireFrame() const
+void Sun::drawWireFrame(double day, double year) const
 {
     // specify material reflectivity
     //GLfloat mat_ambient[] = { 1.0, 1.0, 0.0, 1.0 };
@@ -79,6 +79,7 @@ void Sun::drawWireFrame() const
 
     //set color
     //glColor3fv(color);
+    glRotatef( 160.0, 0.0, 1.0, 0.0 );
     glTranslatef( distance, 0.0, 0.0 );
 
     // draw Sphere (radius, slices, stacks)

@@ -80,7 +80,7 @@ void Animate( void )
         currDay += AnimateIncrement / 24.0;
 
         HourOfDay = HourOfDay - ( ( int ) ( HourOfDay / 24 ) ) * 24;
-        currDay = currDay - ( ( int ) ( currDay / 365 ) ) * 365;
+        currDay = currDay - ( ( int ) ( currDay / 5125 ) ) * 5125;
     }
 
    // glMatrixMode(GL_PROJECTION);
@@ -123,7 +123,7 @@ void Animate( void )
     // draw objects
     for(auto & obj: shapeList)
     {
-	    obj->draw(op);
+	    obj->draw(op, HourOfDay, currDay);
     }
     // Flush the pipeline, and swap the buffers
     glFlush();

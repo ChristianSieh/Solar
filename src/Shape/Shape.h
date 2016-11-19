@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <math.h>
 
 using namespace std;
 
@@ -57,9 +58,9 @@ class Shape
 	virtual ~Shape();
         virtual void translate() const = 0;
         virtual void rotate() const = 0;
-	virtual void draw( int i ) const = 0;
+	virtual void draw( int i , double day, double year ) const = 0;
 	virtual void drawOrbit() const = 0;
-	virtual void drawWireFrame() const = 0;
+	virtual void drawWireFrame(double day, double year) const = 0;
 	virtual void drawSolid() const = 0;
 	virtual int drawImg() const = 0;
 	virtual void drawName() const = 0;
