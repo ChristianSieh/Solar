@@ -1,12 +1,8 @@
  /************************************************************************
    Program: Solar
    Author: Charles Bonn and Christian Sieh
-   Date:
-   Description:    header class for planet object
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
+   Date: 11/18/16
+   Description: Header file for the planet class
  ************************************************************************/
 #ifndef PLANET_H
 #define PLANET_H

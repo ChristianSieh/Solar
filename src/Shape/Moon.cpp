@@ -1,12 +1,8 @@
  /************************************************************************
    Program: Solar
    Author: Charles Bonn and Christian Sieh
-   Date:
+   Date: 11/18/16
    Description:   Moon class handles function related to moon objects
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
  ************************************************************************/
 #include "Moon.h"
 

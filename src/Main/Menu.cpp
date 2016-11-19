@@ -1,12 +1,8 @@
  /************************************************************************
    Program: Solar 
    Author: Charles Bonn and Christian Sieh
-   Date:
+   Date: 11/18/16
    Description:   Handles the menu creation for the program
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
  ************************************************************************/
 #include "Main.h"
 

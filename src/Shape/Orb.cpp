@@ -1,12 +1,10 @@
  /************************************************************************
    Program: Solar  
    Author: Charles Bonn and Christian Sieh
-   Date: 
-   Description:   Orb class handles orb related functions
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
+   Date: 11/18/16
+   Description:   Orb class is derived from shape and sets up functions
+            that will be shared by all orbs such as planets, moons, and
+            the sun
  ************************************************************************/
 #include "Orb.h"
 

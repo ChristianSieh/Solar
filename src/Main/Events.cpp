@@ -3,13 +3,9 @@
    Author: Charles Bonn and Christian Sieh
    Class: CSC433 Computer Graphics
    Instructor: John Weiss
-   Date:
+   Date: 11/18/16
    Description:   Events handles all keyboard and mouse presses of the
 	program
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
  ************************************************************************/
 #include "Main.h"
 
@@ -130,8 +126,8 @@ void Key_r( void )
     }
 }
   /************************************************************************
-   Function: key_a
-   Author: Charles Bonn and Christian Sieh
+   Function: Key_a
+   Author: Charles Bonn
    Description: changes wireframe
    Parameters:
  ************************************************************************/
@@ -144,9 +140,9 @@ void Key_v( void )
 }
 
 /************************************************************************
-   Function: key_c
-   Author: Charles Bonn and Christian Sieh
-   Description: changes wireframe
+   Function: Key_c
+   Author: Charles Bonn
+   Description: Changes wireframe
    Parameters:
  ************************************************************************/
 void Key_c( void )
@@ -160,7 +156,7 @@ void Key_c( void )
 
  /************************************************************************
    Function: key_z
-   Author: charles bonn and christian Sieh
+   Author: Charles bonn
    Description: changes animation speed
    Parameters:
  ************************************************************************/
@@ -171,18 +167,19 @@ void Key_z( void )
 
 /************************************************************************
    Function: key_x
-   Author: Charles Bonn and Christian Sieh
-   Description: changes animation speed
+   Author: Charles Bonn
+   Description: Changes animation speed
    Parameters:
  ************************************************************************/
 void Key_x( void )
 {
     AnimateIncrement *= 2.0; // double animation step
 }
+
  /************************************************************************
-   Function:
-   Author:
-   Description:
+   Function: Key_s
+   Author: Charles Bonn
+   Description: Steps through the animation step by step
    Parameters:
  ************************************************************************/
 void Key_s( void )
@@ -191,9 +188,9 @@ void Key_s( void )
     spinMode = GL_TRUE;
 }
  /************************************************************************
-   Function:
-   Author:
-   Description:
+   Function: Key_space
+   Author: Charles Bonn
+   Description: Resets the camera location
    Parameters:
  ************************************************************************/
 void Key_space( void )
@@ -206,8 +203,8 @@ void Key_space( void )
 
  /************************************************************************
    Function: Key_up
-   Author: Charles Bonn and Christian Sieh
-   Description: handes right key press by moving the camra 
+   Author: Charles Bonn
+   Description: Handles right key press by moving the camra 
    Parameters: void
  ************************************************************************/
 void Key_up( void )
@@ -222,8 +219,8 @@ void Key_up( void )
 
  /************************************************************************
    Function: Key_down
-   Author: Charles Bonn and Christian Sieh
-   Description: handes right key press by moving the camra 
+   Author: Charles Bonn
+   Description: Handles right key press by moving the camra 
    Parameters: void
  ************************************************************************/
 void Key_down( void )
@@ -238,8 +235,8 @@ void Key_down( void )
 
  /************************************************************************
    Function: Key_left
-   Author: Charles Bonn and Christian Sieh
-   Description: handes right key press by moving the camra 
+   Author: Charles Bonn
+   Description: Handles right key press by moving the camra 
    Parameters: void
  ************************************************************************/
 void Key_left( void )
@@ -254,8 +251,8 @@ void Key_left( void )
 
  /************************************************************************
    Function: Key_right
-   Author: Charles Bonn and Christian Sieh
-   Description: handes right key press by moving the camra 
+   Author: Charles Bonn
+   Description: Handles right key press by moving the camra 
    Parameters: void
  ************************************************************************/
 void Key_right( void )
@@ -270,8 +267,8 @@ void Key_right( void )
 
  /************************************************************************
    Function: Key_minus
-   Author: Charles Bonn and Christian Sieh
-   Description: handles the minues key pres and impliments zoom
+   Author: Charles Bonn
+   Description: Handles the minues key pres and impliments zoom
    Parameters:
  ************************************************************************/
 void Key_minus( void )
@@ -294,7 +291,7 @@ void Key_plus( void )
 
  /************************************************************************
    Function: update
-   Author: Charles Bonn and Christian Sieh
+   Author: Charles Bonn
    Description: Updates cells making sure they are within there specified
 	min and max values
    Parameters:
@@ -319,7 +316,7 @@ void update(cell* cell, float y)
 
  /************************************************************************
    Function: mouseclick
-   Author: Charles Bonn and Christian Sieh
+   Author: Christian Sieh
    Description: handles mouse clicks   
    Parameters: 
         int button - Which mouse button was pressed

@@ -2,6 +2,7 @@
    Program: Solar
    Author: Charles Bonn and Christian Sieh
    Class: CSC433 Computer Graphics
+<<<<<<< HEAD
    Instructor: John Weiss
    Date:
    Description:    see read.me
@@ -24,12 +25,27 @@ speed  and  trajectory  relative  to  one  another. The user may zoom
    Modifications:
    Date                Comment            
    ----    ------------------------------------------------
+=======
+   Instructor: Dr. John Weiss
+   Date: 11/18/16
+   Description: This program is a simulation of the solar system. It
+            contains the 8 planets and the sun. This program allows
+            you to navigate around the solar system and implements many
+            opengl features such as materials and lighting. 
+   Compilation instructions: make
+   Usage:
+   Known bugs/missing features:
+        Mouse rotation does not behave correctly
+        Earth's moon does not exist
+        Saturn's rings do not exist
+        
+
+>>>>>>> caafe24c1eaea542bf625ef8fab8d2244fb167dd
  ************************************************************************/
 
 
 #include "Gen.h"
 #include "Main.h"
-
 #include <typeinfo>
 
 /*********************** global symbolic constants *********************/

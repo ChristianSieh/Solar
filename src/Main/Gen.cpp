@@ -1,13 +1,9 @@
  /************************************************************************
    Program: Solar 
    Author: Charles Bonn and Christian Sieh
-   Date:
+   Date: 11/18/16
    Description: Gen generates each of the planets and puts them into
 	a shape vector to be displayed
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
  ************************************************************************/
 #include "Gen.h"
 

@@ -1,12 +1,8 @@
  /************************************************************************
    Program: Solar 
    Author: Charles Bonn and Christain Sieh
-   Date: 
+   Date: 11/18/16
    Description: Header file for gen.cpp
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
  ************************************************************************/
 #ifndef GEN_H
 #define GEN_H

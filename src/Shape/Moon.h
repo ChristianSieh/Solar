@@ -1,12 +1,8 @@
  /************************************************************************
    Program: Solar 
    Author: Charles Bonn and Christian Sieh
-   Date:
+   Date: 11/18/16
    Description:    Header for the moon class
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
  ************************************************************************/#ifndef MOON_H
 #define MOON_H
 

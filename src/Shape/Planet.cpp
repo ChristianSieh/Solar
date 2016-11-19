@@ -1,12 +1,9 @@
  /************************************************************************
    Program: Solar 
    Author: Charles Bonn and Christian Sieh
-   Date:
-   Description:    Planet Class
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
+   Date: 11/18/16
+   Description: The planet class inherits the orb class and deals
+            specifically with code related to the planets
  ************************************************************************/
 
 #include "Planet.h"
