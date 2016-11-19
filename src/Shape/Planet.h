@@ -26,7 +26,7 @@ class Planet : public Orb
 	~Planet();
 	//void draw() const;
 	void drawOrbit() const;
-	void drawWireFrame() const;
+	void drawWireFrame(double day, double year) const;
 	void drawSolid() const;
 	int drawImg() const;
 };

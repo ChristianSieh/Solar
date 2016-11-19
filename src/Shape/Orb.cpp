@@ -61,7 +61,7 @@ void Orb::translate() const
  ************************************************************************/
 void Orb::rotate() const
 {
-    glRotatef(20.0, 0.0 , 1.0, 0.0);
+    //glRotatef(20.0, 0.0 , 1.0, 0.0);
 }
 
  /************************************************************************
@@ -70,14 +70,14 @@ void Orb::rotate() const
    Description: draws name above the orb
    Parameters:
  ************************************************************************/
-void Orb::draw(int i) const
+void Orb::draw(int i, double day, double year) const
 {
     glPushMatrix();
     //glLoadIdentity();
     switch( i )
     {
 	case 1:
-    	    drawWireFrame();
+    	    drawWireFrame(day, year);
 	    break;
 	case 2:
 	    drawSolid();

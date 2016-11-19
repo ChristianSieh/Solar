@@ -46,19 +46,6 @@ Planet::Planet( float r, float di, float y, float da, string n, string i, float 
 Planet::~Planet()
 {
 }
-  /************************************************************************
-   Function: draw
-   Author:
-   Description: draws the orbit path of the planet
-   Parameters:
- ************************************************************************/
-/*void Planet::draw() const
-{
-    glPushMatrix();
-    drawWireFrame();
-    drawOrbit();
-    glPopMatrix();
-} */
 
 /************************************************************************
    Function: drawOrbit
@@ -82,7 +69,7 @@ void Planet::drawOrbit() const
    Description: draws the wireframe
    Parameters:
  ************************************************************************/
-void Planet::drawWireFrame() const
+void Planet::drawWireFrame( double day, double year) const
 {
     // specify material reflectivity
     //GLfloat mat_ambient[] = { 0.0, 1.0, 0.0, 1.0 };
@@ -96,7 +83,8 @@ void Planet::drawWireFrame() const
     glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess ); 
 
     //set color
-    glRotatef( 10.0, 0.0, 1.0, 0.0);
+    glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
+    //glRotated( 90.0, 0.0, 0.0, 1.0);
     glTranslatef( distance, 0.0,  0.0 );
     //draw Sphere (radius, slices, stacks)
     glutWireSphere( radius, 50, 50 );
