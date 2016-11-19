@@ -97,30 +97,33 @@ void Animate( void )
         glShadeModel(GL_SMOOTH);
     else
         glShadeModel(GL_FLAT);
-// cases
-// 1 - wireframe
-// 2 - solid
+
+    // cases
+    // 1 - wireframe
+    // 2 - solid
     if(texture)
     {
         glEnable( GL_TEXTURE_2D );
-        op = 2;
+        op = 3;
     }
-    else
+    else 
     {
+        glDisable( GL_TEXTURE_2D );
         if(solid)
         {
             op = 2;
         }
         else
         {
-	    op = 1;
+            glShadeModel(GL_FLAT);
+	        op = 1;
         }
     }
 
     // draw objects
     for(auto & obj: shapeList)
     {
-	obj->draw(op);
+	    obj->draw(op);
     }
     // Flush the pipeline, and swap the buffers
     glFlush();
@@ -163,8 +166,6 @@ void ResizeWindow( int w, int h )
 
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glEnable(GL_DEPTH_TEST);
-    //glEnable(GL_LIGHTING);
-    //glEnable(GL_LIGHT0); 
 }
  /************************************************************************
    Function: lightModel
