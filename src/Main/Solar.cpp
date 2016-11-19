@@ -29,6 +29,9 @@ vector<Shape*> shapeList;
 GLfloat theta[] = { 0.0, 0.0, 0.0 };
 GLint axis = 2;
 
+// Set initial size of display window
+GLsizei ScreenWidth = 600, ScreenHeight = 600;
+
 bool solid = false;
 bool smooth = false;
 bool texture = false;
@@ -85,6 +88,8 @@ int main( int argc, char** argv )
     glutSpecialFunc( SpecialKeyFunc );
     glutReshapeFunc( ResizeWindow );
     glutDisplayFunc( Animate );
+    glutMouseFunc( mouseclick );
+    glutMotionFunc( mousedrag );
     createMenu();
     lightModel();
 

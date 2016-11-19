@@ -29,6 +29,8 @@ extern vector<Shape*> shapeList;
 extern bool solid;
 extern bool smooth;
 extern bool texture;
+extern GLsizei ScreenWidth;
+extern GLsizei ScreenHeight;
 
 // View Info cell
 struct cell
@@ -69,10 +71,13 @@ void Key_space( void );
 void KeyPressFunc( unsigned char Key, int x, int y );
 void SpecialKeyFunc( int Key, int x, int y );
 void update(cell* cell, float y);
+void mouseclick( int button, int state, int x, int y );
+void mousedrag(int x, int y);
+void normalize(GLfloat (&dir)[3]);
 
 // Menu
 void createMenu();
 void MainMenuHandler( int item );
-void PlanetMenuHandler( int item );
+void HelpMenuHandler( int item );
 
 #endif 
