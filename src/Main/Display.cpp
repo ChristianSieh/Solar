@@ -1,8 +1,11 @@
  /************************************************************************
    Program: Solar
    Author: Charles Bonn and Christian Sieh
+   Class: CSC433 Computer Graphics
+   Instructor: John Weiss
    Date: 11/18/16
-   Description:
+   Description: The display file handles the code that displays the models
+            to the screen as well as viewing with the camera
  ************************************************************************/
 
 #include "Main.h"
@@ -42,9 +45,8 @@ cell perspective[4] = {
     "Specifies distance from viewer to far clipping plane.", "%.1f" },
 };
 
-
-
 GLdouble projection[16], modelview[16];
+
 //animate booleans
 GLenum spinMode = GL_TRUE;
 GLenum singleStep = GL_FALSE;
@@ -80,7 +82,6 @@ void Animate( void )
         currDay = currDay - ( ( int ) ( currDay / 5125 * 365 ) ) * 5125 * 365;
     }
 
-   // glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
     // set camera 
@@ -89,15 +90,11 @@ void Animate( void )
         lookat[6].value, lookat[7].value, lookat[8].value); 
      glGetDoublev(GL_MODELVIEW_MATRIX, modelview); 
 
-
     if(smooth)
         glShadeModel(GL_SMOOTH);
     else
         glShadeModel(GL_FLAT);
 
-    // cases
-    // 1 - wireframe
-    // 2 - solid
     if(texture)
     {
         glEnable( GL_TEXTURE_2D );
@@ -164,9 +161,11 @@ void ResizeWindow( int w, int h )
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glEnable(GL_DEPTH_TEST);
 }
+
  /************************************************************************
    Function: lightModel
-   Author: Charles Bonn and Christian Sieh
+   Author: Dr. John Weiss
+   Modified By: Charles Bonn and Christian Sieh
    Description: set up and handles light and material properties
    Parameters:
  ************************************************************************/
