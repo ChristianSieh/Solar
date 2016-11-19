@@ -1,12 +1,8 @@
  /************************************************************************
    Program: Solar 
    Author: Charles Bonn and Christian Sieh
-   Date:
-   Description:    Header for shape class
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
+   Date: 11/18/16
+   Description: Header file for shape class
  ************************************************************************/
 
 #ifndef SHAPE_H

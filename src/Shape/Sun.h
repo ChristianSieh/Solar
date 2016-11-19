@@ -1,12 +1,8 @@
  /************************************************************************
    Program: Solar
    Author: Charles Bonn and Christian Sieh
-   Date: 
-   Description:    Sun object
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
+   Date: 11/18/16
+   Description: Header file for the sun class
  ************************************************************************/
 #ifndef SUN_H
 #define SUN_H

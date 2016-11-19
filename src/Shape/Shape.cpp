@@ -1,12 +1,9 @@
  /************************************************************************
    Program: Solar 
    Author: Charles Bonn and Christian Sieh
-   Date: 
-   Description:    Shape main class
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
+   Date: 11/18/16
+   Description: The shape class is the base class that all over our other
+            shapes inherit from.
  ************************************************************************/
 #include "Shape.h"
 
@@ -39,7 +36,7 @@ Shape::~Shape()
 
  /************************************************************************
    Function: getNumBytesPerRow
-   Author: Charles Bonn And christian Sieh
+   Author: Dr. John Weiss
    Description: Row are word aligned
    Parameters:
 	int NumCols - number of columns
@@ -51,7 +48,7 @@ inline int Shape::GetNumBytesPerRow( int NumCols ) const
 
  /************************************************************************
    Function: readShort
-   Author: Charles Bonn and Christian Sieh
+   Author: Dr. John Weiss
    Description: read a 16-bit integer from the input file
    Parameters:
 	FILE* infile - the input file
@@ -71,7 +68,7 @@ short Shape::readShort( FILE* infile ) const
 
  /************************************************************************
    Function: readLong 
-   Author: charles Bonn and Christian Sieh
+   Author: Dr. John Weiss
    Description: read a 32-bit integer from the input file
    Parameters:
  ************************************************************************/
@@ -96,7 +93,7 @@ int Shape::readLong( FILE* infile ) const
 
  /************************************************************************
    Function: skipChars
-   Author: Charles Bonn and Christian Sieh
+   Author: Dr. John Weiss
    Description: skip over given number of bytes in input file
    Parameters:
 	FILE* infile - input file
@@ -110,16 +107,11 @@ void Shape::skipChars( FILE* infile, int numChars ) const
     }
 }
 
-/* ********************************************************************
- *  LoadBmpFile
- *  Read into memory an RGB image from an uncompressed BMP file.
- *  Return true for success, false for failure.
- *  Author: Sam Buss December 2001.
- **********************************************************************/
  /************************************************************************
    Function: LoadBMPFile
-   Author: Charles Bonn and Charles Bonn
-   Description: Loads a bitmap file
+   Author: Sam Buss December 2001
+   Description: Read into memory an RGB image from an uncompressed BMP file. 
+            Return true for success, false for failure.
    Parameters:
 	char* filename - file
 	int &numrows - number of rows

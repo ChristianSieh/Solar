@@ -1,12 +1,9 @@
  /************************************************************************
    Program: Solar 
    Author: Charles Bonn and Christian Sieh
-   Date:
-   Description: Main head for the program
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
+   Date: 11/18/16
+   Description: Main header file for the program. Contains global variables
+            and functions.
  ************************************************************************/
 #ifndef MAIN_H
 #define MAIN_H

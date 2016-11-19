@@ -3,13 +3,9 @@
    Author: Charles Bonn and Christian Sieh
    Class: CSC433 Computer Graphics
    Instructor: John Weiss
-   Date:
+   Date: 11/18/16
    Description:   Events handles all keyboard and mouse presses of the
 	program
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
  ************************************************************************/
 #include "Main.h"
 
