@@ -22,10 +22,10 @@
 	string n - name 
 	string i - image name
  ************************************************************************/
-Moon::Moon( float r, float di, float y, float da, string n, string i, float c[4])
+Moon::Moon( float r, float di, float y, float da, string n, string i, float c[4], float pr, float pd, float py, float pda)
 {
     radius = r / 1000;
-    distance = (di*.5);
+    distance = (di*.5) + 10 ;
     totalYear = y;
     totalDay = da;
     name = n;
@@ -34,6 +34,11 @@ Moon::Moon( float r, float di, float y, float da, string n, string i, float c[4]
     copy(c, c + 4, color);
     object = gluNewQuadric();
     gluQuadricNormals( object, GLU_SMOOTH );
+
+    pradius = pr / 1000;
+    pdistance = ( pd * .5 )  + 40;
+    pyear = py;
+    pday = pda;
 }
 
 /************************************************************************
@@ -70,11 +75,13 @@ void Moon::drawWireFrame( double day, double year, float wireframe) const
     glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess ); 
 
     //set color
-    glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
-    glTranslatef( distance, 0.0,  0.0 );
-
     glPushMatrix();
-    glRotatef( 360 * 12 * fmod( day, totalDay)  / totalDay, 0.0, 0.0, 1.0);
+    glRotatef( 360 * fmod(year,pyear) / pyear, 0.0, 0.0, 1.0);
+    glTranslatef( pdistance, 0.0,  0.0 );
+
+    //glPushMatrix();
+    glRotatef( 360 * 12 * fmod( day, totalYear)  / totalYear, 0.0, 0.0, 1.0);
+    glTranslatef( distance , 0.0, 0.0 );
     glutWireSphere( radius, wireframe, wireframe );
     glPopMatrix();
 }
@@ -96,10 +103,14 @@ void Moon::drawSolid(double day, double year) const
     glMaterialfv( GL_FRONT_AND_BACK, GL_SPECULAR, color );
     glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess ); 
 
-    glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
-    glTranslatef( distance, 0.0, 0.0 );
+    //set color
     glPushMatrix();
-    glRotatef( 360 * 12 * fmod(day, totalDay) / totalDay, 0.0, 0.0, 1.0);
+    glRotatef( 360 * fmod(year,pyear) / pyear, 0.0, 0.0, 1.0);
+    glTranslatef( pdistance, 0.0,  0.0 );
+
+    //glPushMatrix();
+    glRotatef( 360 * 12 * fmod( day, totalYear)  / totalYear, 0.0, 0.0, 1.0);
+    glTranslatef( distance , 0.0, 0.0 );
     glutSolidSphere( radius, 50, 50 );
     glPopMatrix();
 }
@@ -135,11 +146,14 @@ int Moon::drawImg(double day, double year) const
     gluQuadricDrawStyle( object, GLU_FILL );
     gluQuadricTexture( object, GL_TRUE );
     
-    glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
-    glTranslatef( distance, 0.0, 0.0 );
+    //set color
     glPushMatrix();
-    glRotatef( 360 * 12 * fmod(day,totalDay) / totalDay, 0.0, 0.0, 1.0);
-    gluSphere(object, radius, 50, 50);
+    glRotatef( 360 * fmod(year,pyear) / pyear, 0.0, 0.0, 1.0);
+    glTranslatef( pdistance, 0.0,  0.0 );
+
+    //glPushMatrix();
+    glRotatef( 360 * 12 * fmod( day, totalYear)  / totalYear, 0.0, 0.0, 1.0);
+    glTranslatef( distance , 0.0, 0.0 );
     glPopMatrix(); 
 
     return 0;

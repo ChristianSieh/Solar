@@ -84,6 +84,9 @@ void genEarth(vector<Shape*> &shapeList)
 {
     float color[] = {0.043137255, 0.360784314, 0.890196078, 1.0};
     shapeList.push_back( new Planet( 6378, 150, 365, 24, "Earth", "../src/PlanetImg/earth.bmp", color ) );
+    shapeList.push_back( new Moon( 1738 , 0.384, 27.3, 27.3, "Moon", "../src/PlanetImg/moon.bmp", color , 6378, 150, 365, 24) );
+
+
 }
 
 /************************************************************************

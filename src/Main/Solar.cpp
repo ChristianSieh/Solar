@@ -4,12 +4,23 @@
    Class: CSC433 Computer Graphics
    Instructor: John Weiss
    Date:
-   Description:    (program requirements)
+   Description:    see read.me
+
+Write a solar system simulation program that displays the Sun and the 
+eight* planets, plus the Earth’s moon and the rings of Saturn. Animate
+ this simulation so that the planets rotate about the Sun with correct 
+speed  and  trajectory  relative  to  one  another. The user may zoom 
+ in  or  out  of  the  scene, pan in all directions, and speed
+ up or slow down the simulation
+
    Input: None
    Output:
-   Compilation instructions:
-   Usage:
-   Known bugs/missing features:
+   Compilation instructions: run make
+   Usage:  go to builds and run Solar
+   Known bugs/missing features: 
+	- moon jumps around
+	- saturn does not have rings
+	- earth does not rotate
    Modifications:
    Date                Comment            
    ----    ------------------------------------------------
