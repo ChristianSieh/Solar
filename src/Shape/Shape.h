@@ -52,7 +52,7 @@ class Shape
     public:
 	GLUquadricObj* object;
 	string name;
-    	float color[4];
+	float color[4];
 	//constructor 
 	Shape( float di = 0.0, float y = 0.0, float da = 0.0, string n = "null", string i = "null", float c[4] = (float*)(YellowA));
 	virtual ~Shape();

@@ -31,6 +31,8 @@ Sun::Sun( float r, float d, string n, string i, float c[4] )
     img = i;
     type = "Sun";
     copy(c, c + 4, color);
+    object = gluNewQuadric();
+    gluQuadricNormals( object, GLU_SMOOTH );
 }
 
  /************************************************************************
@@ -119,16 +121,20 @@ void Sun::drawSolid() const
  ************************************************************************/
 int Sun::drawImg() const
 {
-    // read texture map from BMP file
-    // Ref: Buss, 3D Computer Graphics, 2003.
+    glEnable( GL_DEPTH_TEST );
 
     int nrows, ncols;
-    unsigned char* image;
-    if ( !LoadBmpFile( img.c_str(), nrows, ncols, image ) )
+    unsigned char* imageData;
+    if ( !LoadBmpFile( img.c_str(), nrows, ncols, imageData ) )
     {
         std::cerr << "Error: unable to load " << img << std::endl;
         return -1;
     }
+
+    gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, ncols, nrows, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+    glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );
+
+    delete [] imageData;
 
     // Pixel alignment: each row is word aligned (aligned to a 4 byte boundary)
     // Therefore, no need to call glPixelStore( GL_UNPACK_ALIGNMENT, ... );
@@ -137,11 +143,10 @@ int Sun::drawImg() const
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-    gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, ncols, nrows, GL_RGB, GL_UNSIGNED_BYTE, image );
     
-    delete [] image;
-
-    glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );
+    gluQuadricTexture( object, GL_TRUE );
+    
+    gluSphere(object, radius, 50, 50);
 
     return 0;
 }

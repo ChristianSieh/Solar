@@ -76,12 +76,15 @@ void Orb::draw(int i, double day, double year) const
     //glLoadIdentity();
     switch( i )
     {
-	case 1:
-    	    drawWireFrame(day, year);
-	    break;
-	case 2:
-	    drawSolid();
-	    break;
+	    case 1:
+	        drawWireFrame(day, year);
+	        break;
+	    case 2:
+	        drawSolid();
+	        break;
+        case 3:
+            drawImg();
+            break;
     }
     drawOrbit();
     glPopMatrix();
