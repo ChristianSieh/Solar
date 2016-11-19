@@ -14,11 +14,14 @@
 
 #include <GL/freeglut.h>
 #include <string>
+#include <string.h>
 #include <iostream>
 #include <algorithm>
 #include <math.h>
+#include <vector>
 
 using namespace std;
+
 
 // color constants
 const float White[]   = { 1.0, 1.0, 1.0 };
@@ -58,11 +61,11 @@ class Shape
 	virtual ~Shape();
         virtual void translate() const = 0;
         virtual void rotate() const = 0;
-	virtual void draw( int i , double day, double year ) const = 0;
+	virtual void draw( int i , double day, double year, float wireframe ) const = 0;
 	virtual void drawOrbit() const = 0;
-	virtual void drawWireFrame(double day, double year) const = 0;
-	virtual void drawSolid() const = 0;
-	virtual int drawImg() const = 0;
+	virtual void drawWireFrame(double day, double year,float wireframe) const = 0;
+	virtual void drawSolid(double day, double year) const = 0;
+	virtual int drawImg(double day, double year) const = 0;
 	virtual void drawName() const = 0;
 	virtual void printAll() const = 0;
 	virtual void printName() const = 0;

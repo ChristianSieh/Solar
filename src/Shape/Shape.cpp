@@ -206,4 +206,3 @@ bool Shape::LoadBmpFile( const char* filename, int &NumRows, int &NumCols, unsig
     return true;
 }
 
-

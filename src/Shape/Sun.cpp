@@ -63,7 +63,7 @@ void Sun::drawOrbit() const
    Description: draws a wireframe orb
    Parameters:
  ************************************************************************/
-void Sun::drawWireFrame(double day, double year) const
+void Sun::drawWireFrame(double day, double year, float wireframe) const
 {
     // specify material reflectivity
     //GLfloat mat_ambient[] = { 1.0, 1.0, 0.0, 1.0 };
@@ -82,8 +82,9 @@ void Sun::drawWireFrame(double day, double year) const
     glRotatef( 160.0, 0.0, 1.0, 0.0 );
     glTranslatef( distance, 0.0, 0.0 );
 
+    
     // draw Sphere (radius, slices, stacks)
-    glutWireSphere( radius, 50, 50 );
+    glutWireSphere( radius, wireframe, wireframe );
 }
 
  /************************************************************************
@@ -92,7 +93,7 @@ void Sun::drawWireFrame(double day, double year) const
    Description: draws a solid orb
    Parameters:
  ************************************************************************/
-void Sun::drawSolid() const
+void Sun::drawSolid(double day, double year) const
 {
     // specify material reflectivity
     //GLfloat mat_ambient[] = { 1.0, 1.0, 0.0, 1.0 };
@@ -119,7 +120,7 @@ void Sun::drawSolid() const
    Description: draws a textmap img
    Parameters:
  ************************************************************************/
-int Sun::drawImg() const
+int Sun::drawImg(double day, double year) const
 {
     glEnable( GL_DEPTH_TEST );
 
@@ -150,3 +151,4 @@ int Sun::drawImg() const
 
     return 0;
 }
+

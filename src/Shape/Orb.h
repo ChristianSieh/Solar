@@ -29,13 +29,14 @@ class Orb : public Shape
 	~Orb();
         void translate() const;
 	void rotate() const;
-	void draw( int i, double day, double year ) const ;
+	void draw( int i, double day, double year, float wireframe ) const ;
 	void drawName() const;
         void printAll() const;
 	void printName() const;
 	void printDate() const;
 	void printRadius() const;
 	void printDistance() const;
+        void pushV( Shape* obj ) const;
 };
 
 

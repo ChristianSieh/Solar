@@ -24,7 +24,7 @@
  ************************************************************************/
 Orb::Orb(float r, float di, float y, float da, string n, string i)
 {
-    radius = r;
+	radius = r;
     distance = di;
     totalYear = y;
     totalDay = da;
@@ -70,24 +70,26 @@ void Orb::rotate() const
    Description: draws name above the orb
    Parameters:
  ************************************************************************/
-void Orb::draw(int i, double day, double year) const
+void Orb::draw(int i, double day, double year, float wireframe) const
 {
     glPushMatrix();
     //glLoadIdentity();
     switch( i )
     {
-	    case 1:
-	        drawWireFrame(day, year);
-	        break;
-	    case 2:
-	        drawSolid();
-	        break;
+	case 1:
+             drawWireFrame(day, year, wireframe);	
+             break;
+	case 2:
+             drawSolid(day, year);
+             break;
         case 3:
-            drawImg();
+            drawImg(day, year);
             break;
     }
     drawOrbit();
+    
     glPopMatrix();
+    drawName();
 }
 
 
@@ -100,7 +102,14 @@ void Orb::draw(int i, double day, double year) const
  ************************************************************************/
 void Orb::drawName() const
 {
-	    
+    glPushMatrix();
+    unsigned char temp[20];
+    strcpy( (char*) temp, name.c_str() );
+    glRasterPos3f( distance, radius, radius + 5 );
+    glScalef( .15, .15, 1 );
+    glColor3fv( White );
+    glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_10, temp);
+    glPopMatrix();
 }
 
 

@@ -58,6 +58,7 @@ int op;
 float HourOfDay = 0.0;
 float currDay = 0.0;
 float AnimateIncrement = 24.0; 
+float wireframe = 15.0;
 
 /************************************************************************
    Function: Animate
@@ -77,10 +78,10 @@ void Animate( void )
     {
         // Update the animation state
         HourOfDay += AnimateIncrement;
-        currDay += AnimateIncrement / 24.0;
+        currDay += AnimateIncrement / 5825 ;
 
-        HourOfDay = HourOfDay - ( ( int ) ( HourOfDay / 24 ) ) * 24;
-        currDay = currDay - ( ( int ) ( currDay / 5125 ) ) * 5125;
+        HourOfDay = HourOfDay - ( ( int ) ( HourOfDay / 5825 ) ) * 5825;
+        currDay = currDay - ( ( int ) ( currDay / 5125 * 365 ) ) * 5125 * 365;
     }
 
    // glMatrixMode(GL_PROJECTION);
@@ -90,7 +91,7 @@ void Animate( void )
     gluLookAt(lookat[0].value, lookat[1].value, lookat[2].value,
         lookat[3].value, lookat[4].value, lookat[5].value,
         lookat[6].value, lookat[7].value, lookat[8].value); 
-    // glGetDoublev(GL_MODELVIEW_MATRIX, modelview); 
+     glGetDoublev(GL_MODELVIEW_MATRIX, modelview); 
 
 
     if(smooth)
@@ -123,7 +124,7 @@ void Animate( void )
     // draw objects
     for(auto & obj: shapeList)
     {
-	    obj->draw(op, HourOfDay, currDay);
+	    obj->draw(op, HourOfDay, currDay, wireframe);
     }
     // Flush the pipeline, and swap the buffers
     glFlush();

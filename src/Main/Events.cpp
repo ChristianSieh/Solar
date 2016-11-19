@@ -34,7 +34,22 @@ void KeyPressFunc( unsigned char Key, int x, int y )
         case 'S':
             Key_s();
             break;
-
+	case 'c':
+	case 'C':
+	    Key_c();
+	    break;
+	case 'v':
+	case 'V':
+	    Key_v();
+	    break;
+        case 'z':
+	case 'Z':
+            Key_z();
+	    break;
+        case 'x':
+	case 'X':
+	    Key_x();
+	    break;
         case 32:
 	    Key_space();
 	    break;
@@ -107,8 +122,56 @@ void Key_r( void )
         spinMode = !spinMode;	
     }
 }
+  /************************************************************************
+   Function: key_a
+   Author: charles bonn and christian Sieh
+   Description: changes wireframe
+   Parameters:
+ ************************************************************************/
+void Key_v( void )
+{
+   if( wireframe < 50 )
+   {
+       wireframe += 1.0; // half amimation step
+   }
+}
 
-// single step animation
+/************************************************************************
+   Function: key_s
+   Author: charles bonn and christian Sieh
+   Description: changes wireframe
+   Parameters:
+ ************************************************************************/
+void Key_c( void )
+{
+   if( wireframe > 2 )
+   {
+   	wireframe -= 1.0; // half amimation step
+   }
+}
+
+
+ /************************************************************************
+   Function: key_z
+   Author: charles bonn and christian Sieh
+   Description: changes animation speed
+   Parameters:
+ ************************************************************************/
+void Key_z( void )
+{
+   AnimateIncrement /= 2.0; // half amimation step
+}
+
+/************************************************************************
+   Function: key_x
+   Author: Charles Bonn and Christian Sieh
+   Description: changes animation speed
+   Parameters:
+ ************************************************************************/
+void Key_x( void )
+{
+    AnimateIncrement *= 2.0; // double animation step
+}
  /************************************************************************
    Function:
    Author:

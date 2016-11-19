@@ -22,15 +22,18 @@
 	string n - name 
 	string i - image name
  ************************************************************************/
-Moon::Moon( float r, float di, float y, float da, string n, string i)
+Moon::Moon( float r, float di, float y, float da, string n, string i, float c[4])
 {
-    radius = r;
-    distance = di;
+    radius = r / 1000;
+    distance = (di*.5);
     totalYear = y;
     totalDay = da;
     name = n;
     img = i; 
     type = "Moon";
+    copy(c, c + 4, color);
+    object = gluNewQuadric();
+    gluQuadricNormals( object, GLU_SMOOTH );
 }
 
 /************************************************************************
@@ -50,3 +53,103 @@ void Moon::drawOrbit() const
     glColor3fv( color );
     glPopMatrix();
 }
+
+/************************************************************************
+   Function: drawWireFrame
+   Author: Charles Bonn and Christian Sieh
+   Description: draws the wireframe
+   Parameters:
+ ************************************************************************/
+void Moon::drawWireFrame( double day, double year, float wireframe) const
+{
+    // specify material reflectivity
+    //GLfloat mat_ambient[] = { 0.0, 1.0, 0.0, 1.0 };
+    //GLfloat mat_diffuse[] = { 1.0, 0.549019608, 0.0, 1.0 };
+    //GLfloat mat_specular[] = { 1.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_shininess = { 20.0 };
+    
+    glMaterialfv( GL_FRONT_AND_BACK, GL_AMBIENT, color );
+    glMaterialfv( GL_FRONT_AND_BACK, GL_DIFFUSE, color );
+    glMaterialfv( GL_FRONT_AND_BACK, GL_SPECULAR, color );
+    glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess ); 
+
+    //set color
+    glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
+    glTranslatef( distance, 0.0,  0.0 );
+
+    glPushMatrix();
+    glRotatef( 360 * 12 * fmod( day, totalDay)  / totalDay, 0.0, 0.0, 1.0);
+    glutWireSphere( radius, wireframe, wireframe );
+    glPopMatrix();
+}
+
+ /************************************************************************
+   Function: drawSolid
+   Author: Charles Bonn and Christian Sieh
+   Description: draws a solid planet
+   Parameters:
+ ************************************************************************/
+void Moon::drawSolid(double day, double year) const
+{
+    glDisable( GL_DEPTH_TEST );
+
+    // specify material reflectivity
+    //GLfloat mat_ambient[] = { 0.0, 1.0, 0.0, 1.0 };
+    //GLfloat mat_diffuse[] = { 1.0, 0.549019608, 0.0, 1.0 };
+    //GLfloat mat_specular[] = { 1.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_shininess = { 20.0 };
+    
+    glMaterialfv( GL_FRONT_AND_BACK, GL_AMBIENT, color );
+    glMaterialfv( GL_FRONT_AND_BACK, GL_DIFFUSE, color );
+    glMaterialfv( GL_FRONT_AND_BACK, GL_SPECULAR, color );
+    glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess ); 
+
+    glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
+    glTranslatef( distance, 0.0, 0.0 );
+    glPushMatrix();
+    glRotatef( 360 * 12 * fmod(day, totalDay) / totalDay, 0.0, 0.0, 1.0);
+    glutSolidSphere( radius, 50, 50 );
+    glPopMatrix();
+}
+
+ /************************************************************************
+   Function: drawImg
+   Author: Charles Bonn and Christian Sieh
+   Description: draws the textmaped image
+   Parameters:
+ ************************************************************************/
+int Moon::drawImg(double day, double year) const
+{
+    glEnable( GL_DEPTH_TEST );
+
+    int nrows, ncols;
+    unsigned char* imageData;
+    if ( !LoadBmpFile( img.c_str(), nrows, ncols, imageData ) )
+    {
+        std::cerr << "Error: unable to load " << img << std::endl;
+        return -1;
+    }
+
+    gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, ncols, nrows, GL_RGB, GL_UNSIGNED_BYTE, imageData);
+    glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE );
+
+    delete [] imageData;
+
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
+    
+    gluQuadricDrawStyle( object, GLU_FILL );
+    gluQuadricTexture( object, GL_TRUE );
+    
+    glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
+    glTranslatef( distance, 0.0, 0.0 );
+    glPushMatrix();
+    glRotatef( 360 * 12 * fmod(day,totalDay) / totalDay, 0.0, 0.0, 1.0);
+    gluSphere(object, radius, 50, 50);
+    glPopMatrix(); 
+
+    return 0;
+}
+

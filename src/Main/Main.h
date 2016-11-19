@@ -50,6 +50,7 @@ extern GLenum viewMode;
 extern float HourOfDay;
 extern float currDay;
 extern float AnimateIncrement;  // Time step for animation (hours)
+extern float wireframe;
 
 // Display
 void Animate( void );
@@ -57,6 +58,10 @@ void ResizeWindow( int w, int h);
 void lightModel();
 
 // Events
+void Key_c( void );
+void Key_v( void );
+void Key_z( void );
+void Key_x( void );
 void Key_r( void );
 void Key_s( void );
 void Key_up( void );

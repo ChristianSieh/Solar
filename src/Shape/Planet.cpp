@@ -69,7 +69,7 @@ void Planet::drawOrbit() const
    Description: draws the wireframe
    Parameters:
  ************************************************************************/
-void Planet::drawWireFrame( double day, double year) const
+void Planet::drawWireFrame( double day, double year, float wireframe) const
 {
     // specify material reflectivity
     //GLfloat mat_ambient[] = { 0.0, 1.0, 0.0, 1.0 };
@@ -87,9 +87,23 @@ void Planet::drawWireFrame( double day, double year) const
     glTranslatef( distance, 0.0,  0.0 );
 
     glPushMatrix();
-    glRotatef( 360 * day / totalDay, 0.0, 0.0, 1.0);
-    glutWireSphere( radius, 50, 50 );
+    glRotatef( 360  * fmod( day, totalDay)  / totalDay, 0.0, 0.0, 1.0);
+    glutWireSphere( radius, wireframe, wireframe );
     glPopMatrix();
+
+/* 
+    if( name.compare("Earth") == 0 )
+    {
+        glPushMatrix();
+        glRotatef( 360 * fmod( day, 27.3 ) / 27.3, 0.0,0.0,1.0 );
+        glTranslatef( (.384 *.5) +40, 0.0, 0.0 );
+	glutWireSphere( .1738, 5.0, 5.0 );
+	glPopMatrix();
+    }
+    else if( name.compare("Saturn") == 0 )
+    {
+    }
+*/
 }
 
  /************************************************************************
@@ -98,7 +112,7 @@ void Planet::drawWireFrame( double day, double year) const
    Description: draws a solid planet
    Parameters:
  ************************************************************************/
-void Planet::drawSolid() const
+void Planet::drawSolid(double day, double year) const
 {
     glDisable( GL_DEPTH_TEST );
 
@@ -113,9 +127,12 @@ void Planet::drawSolid() const
     glMaterialfv( GL_FRONT_AND_BACK, GL_SPECULAR, color );
     glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess ); 
 
+    glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
     glTranslatef( distance, 0.0, 0.0 );
-    //draw Sphere (radius, slices, stacks)
+    glPushMatrix();
+    glRotatef( 360  * fmod(day, totalDay) / totalDay, 0.0, 0.0, 1.0);
     glutSolidSphere( radius, 50, 50 );
+    glPopMatrix();
 }
 
  /************************************************************************
@@ -124,7 +141,7 @@ void Planet::drawSolid() const
    Description: draws the textmaped image
    Parameters:
  ************************************************************************/
-int Planet::drawImg() const
+int Planet::drawImg(double day, double year) const
 {
     glEnable( GL_DEPTH_TEST );
 
@@ -149,8 +166,13 @@ int Planet::drawImg() const
     gluQuadricDrawStyle( object, GLU_FILL );
     gluQuadricTexture( object, GL_TRUE );
     
+    glRotatef( 360 * fmod(year,totalYear) / totalYear, 0.0, 0.0, 1.0);
     glTranslatef( distance, 0.0, 0.0 );
+    glPushMatrix();
+    glRotatef( 360  * fmod(day,totalDay) / totalDay, 0.0, 0.0, 1.0);
     gluSphere(object, radius, 50, 50);
+    glPopMatrix(); 
 
     return 0;
 }
+
