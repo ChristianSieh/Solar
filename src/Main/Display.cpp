@@ -60,8 +60,8 @@ float wireframe = 15.0;
 
 /************************************************************************
    Function: Animate
-   Author:
-   Description: main display loop of the program. handles redrawing the window
+   Author: Charles Bonn and Christian Sieh
+   Description: Main display loop of the program. Handles redrawing the window
 	and the graphical contents
    Parameters: void
  ************************************************************************/
@@ -128,12 +128,13 @@ void Animate( void )
         spinMode = GL_FALSE;
     }
 
-    glutPostRedisplay();		// Request a re-draw for animation purposes
+    // Request a re-draw for animation purposes
+    glutPostRedisplay();		
 }
 
  /************************************************************************
    Function: ResizeWindow
-   Author: Charles Bonn and Christian Sieh
+   Author: Charles Bonn
    Description: Handles the resizing of the graphical window
    Parameters:
 	int w - width of the window
