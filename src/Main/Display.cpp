@@ -12,7 +12,7 @@
 #include "Main.h"
 
 /*********************** global symbolic constants *********************/
-// look at controls the camra
+// look at controls the camera
 cell lookat[9] = {
     { 1, 0.0, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the X position of the eye point.", "%.2f" },

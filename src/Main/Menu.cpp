@@ -13,7 +13,7 @@
  /************************************************************************
    Function: createMenu
    Author: Charles Bonn and Christian Sieh
-   Description: creates the right click menu for the program
+   Description: Creates the right click menu for the program
    Parameters:
  ************************************************************************/
 void createMenu()
@@ -51,7 +51,7 @@ void createMenu()
  /************************************************************************
    Function: MainMenuHandler
    Author: Charles Bonn and Christian Sieh
-   Description: Handles Menu options
+   Description: Handles menu options for the main menu
    Parameters:
 	int item - the menu option pressed
  ************************************************************************/

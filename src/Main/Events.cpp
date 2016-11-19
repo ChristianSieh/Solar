@@ -108,10 +108,10 @@ void SpecialKeyFunc( int Key, int x, int y )
 }
 
 // restart animation
- /*********************** *************************************************
-   Function:
-   Author:
-   Description:
+ /************************************************************************
+   Function: key_r
+   Author: Charles BOnn
+   Description: Starts and stops animation
    Parameters:
  ************************************************************************/
 void Key_r( void )
@@ -131,7 +131,7 @@ void Key_r( void )
 }
   /************************************************************************
    Function: key_a
-   Author: charles bonn and christian Sieh
+   Author: Charles Bonn and Christian Sieh
    Description: changes wireframe
    Parameters:
  ************************************************************************/
@@ -144,8 +144,8 @@ void Key_v( void )
 }
 
 /************************************************************************
-   Function: key_s
-   Author: charles bonn and christian Sieh
+   Function: key_c
+   Author: Charles Bonn and Christian Sieh
    Description: changes wireframe
    Parameters:
  ************************************************************************/
