@@ -36,7 +36,7 @@ Sun::Sun( float r, float d, string n, string i, float c[4] )
 }
 
  /************************************************************************
-   Function: sun constructor
+   Function: sun deconstructor
    Author: Charles Bonn and Christian Sieh
    Description: sun deconstructor
    Parameters:
@@ -66,10 +66,8 @@ void Sun::drawOrbit() const
 void Sun::drawWireFrame(double day, double year, float wireframe) const
 {
     // specify material reflectivity
-    //GLfloat mat_ambient[] = { 1.0, 1.0, 0.0, 1.0 };
     GLfloat mat_diffuse[] = { 1.0, 0.549019608, 0.0, 1.0 };
     GLfloat mat_specular[] = { 1.0, 0.0, 0.0, 1.0 };
-    GLfloat mat_emission[] = { 1.0, 1.0, 0.0, 1.0 };
     GLfloat mat_shininess = { 100.0 };
     
     glMaterialfv( GL_FRONT_AND_BACK, GL_AMBIENT, color );
@@ -78,7 +76,6 @@ void Sun::drawWireFrame(double day, double year, float wireframe) const
     glMaterialf( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess ); 
 
     //set color
-    //glColor3fv(color);
     glRotatef( 160.0, 0.0, 1.0, 0.0 );
     glTranslatef( distance, 0.0, 0.0 );
 

@@ -13,6 +13,13 @@
  ************************************************************************/
 #include "Main.h"
 
+int mouseX = ScreenWidth / 2.0;
+int mouseY = ScreenHeight / 2.0;
+int xOffset;
+int yOffset;
+GLfloat yaw;
+GLfloat pitch;
+
  /************************************************************************
    Function: KeyPressFunc
    Author: Charles Bonn and Christian Sieh
@@ -89,19 +96,19 @@ void SpecialKeyFunc( int Key, int x, int y )
         case GLUT_KEY_DOWN:
             Key_down();
             break;
-	case GLUT_KEY_LEFT:
-	    Key_left();
-	    break;
-	case GLUT_KEY_RIGHT:
-	    Key_right();
-	    break;
+	    case GLUT_KEY_LEFT:
+	        Key_left();
+	        break;
+	    case GLUT_KEY_RIGHT:
+	        Key_right();
+	        break;
     }
 
     glutPostRedisplay();
 }
 
 // restart animation
- /************************************************************************
+ /*********************** *************************************************
    Function:
    Author:
    Description:
@@ -195,8 +202,6 @@ void Key_space( void )
     {
         lookat[i].value = lookat[i].reset;
     }
-
- 
 }
 
  /************************************************************************
@@ -242,7 +247,7 @@ void Key_left( void )
     //update camera position
     float y = lookat[0].value - (lookat[0].step * lookat[2].value );
     update(&lookat[0], y);
-    //update camra target
+    //update camera target
     y = lookat[3].value - ( lookat[3].step * lookat[2].value );
     update(&lookat[3], y);
 }
@@ -300,14 +305,121 @@ void update(cell* cell, float y)
 {
     if( y < cell->min )
     {
-	cell->value = cell->min;
+	    cell->value = cell->min;
     }
     else if( y > cell->max )
     {
-	cell->value = cell->max;
+	    cell->value = cell->max;
     }
     else
     {
-	cell->value = y;
+	    cell->value = y;
     }
+}
+
+ /************************************************************************
+   Function: mouseclick
+   Author: Charles Bonn and Christian Sieh
+   Description: handles mouse clicks   
+   Parameters: 
+        int button - Which mouse button was pressed
+		int state - The state of mouse button
+		int x - The x coordinate of where the mouse was clicked
+		int y - The y coordinate of where the mouse was clicked
+ ************************************************************************/
+void mouseclick( int button, int state, int x, int y )
+{
+    // correct for upside-down screen coordinates
+    y = ScreenHeight - y;
+
+    // handle mouse click events
+    switch ( button )
+    {
+        case GLUT_LEFT_BUTTON:
+            if ( state == GLUT_DOWN )
+            {
+                mouseX = x;
+                mouseY = y;		    
+            }
+            else if ( state == GLUT_UP )
+            {
+                mouseX = 0;
+                mouseY = 0;
+            }
+            break;
+
+        case GLUT_RIGHT_BUTTON:
+            break;
+    }
+}
+
+ /************************************************************************
+   Function: mousedrag
+   Author: Christian Sieh
+   Description: GLUT motionfunc that handles when the mouse is clicked and 
+                dragged across the screen to get the mouse position.
+   Parameters: 
+		int x - The x coordinate of where the mouse is currently
+		int y - The y coordinate of where the mouse is currently
+ ************************************************************************/
+void mousedrag(int x, int y)
+{
+    y = ScreenHeight - y;
+
+    xOffset = x - mouseX;
+    yOffset = y - mouseY;
+
+    GLfloat sensitivity = 0.5f;
+    xOffset *= sensitivity;
+    yOffset *= sensitivity;
+
+    yaw = xOffset;
+    pitch = yOffset;
+
+    if(pitch > 89.0f)
+      pitch =  89.0f;
+    if(pitch < -89.0f)
+      pitch = -89.0f;
+
+    GLfloat dir[3];
+
+    dir[0] = cos(pitch * (M_PI / 180)) * cos(yaw * (M_PI / 180));
+    dir[1] = sin(pitch * (M_PI / 180));
+    dir[2] = cos(pitch * (M_PI / 180)) * sin(yaw * (M_PI / 180));
+
+    normalize(dir);
+
+    x = lookat[3].value + (xOffset * dir[0]);
+    update(&lookat[3], x);
+
+    y = lookat[4].value + (yOffset * dir[1]);
+    update(&lookat[4], y);
+
+    GLfloat z = lookat[5].value + dir[2];
+    update(&lookat[5], z);
+
+    glutPostRedisplay();
+}
+
+ /************************************************************************
+   Function: normalize
+   Author: Christian Sieh
+   Description: Function that normalizes a vector
+   Parameters: 
+		GLfloat dir[3] - An array that contains the x, y, and z of a
+                            vector
+ ************************************************************************/
+void normalize(GLfloat (&dir)[3])
+{
+    GLfloat xSqr = dir[0] * dir[0];
+    GLfloat ySqr = dir[1] * dir[1];
+    GLfloat zSqr = dir[2] * dir[2];
+
+    GLfloat total = xSqr + ySqr + zSqr;
+
+    total = sqrt(total);
+
+    dir[0] = dir[0] / total;
+    dir[1] = dir[1] / total;
+    dir[2] = dir[2] / total;
 }

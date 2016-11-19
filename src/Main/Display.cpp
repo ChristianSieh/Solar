@@ -24,7 +24,7 @@ cell lookat[9] = {
     "Specifies the X position of the reference point.", "%.2f" },
     { 5, 0.0, -2300.0, 2300.0, 0.0, 0.5,
     "Specifies the Y position of the reference point.", "%.2f" },
-    { 6, 0.0, -5.0, 5.0, 0.0, 0.1,
+    { 6, 0.0, -1000.0, 1000.0, 0.0, 0.1,
     "Specifies the Z position of the reference point.", "%.2f" },
     { 7, 0.0, -2.0, 2.0, 0.0, 0.1,
     "Specifies the X direction of the up vector.", "%.2f" },
@@ -71,7 +71,7 @@ void Animate( void )
 {
     glEnable(GL_MULTISAMPLE);
 
-    // Clear the redering window
+    // Clear the rendering window
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     if ( spinMode )

@@ -19,12 +19,19 @@
 void createMenu()
 {       
     int value = 1;
-    int planetMenu = glutCreateMenu(PlanetMenuHandler);
+    int helpMenu = glutCreateMenu(HelpMenuHandler);
 
-    for(auto & obj: shapeList)
-    {
-	    glutAddMenuEntry(obj->name.c_str(), value++);
-    }
+    glutAddMenuEntry("Up Key - Pan Up", value++);
+    glutAddMenuEntry("Down Key - Pan Down", value++);
+    glutAddMenuEntry("Left Key - Pan Left", value++);
+    glutAddMenuEntry("Right Key - Pan Right", value++);
+    glutAddMenuEntry("R Key - Start/Stop Animation", value++);
+    glutAddMenuEntry("S Key - Single Step Animation", value++);
+    glutAddMenuEntry("Space Key - Reset Camera", value++);
+    glutAddMenuEntry("- Key - Zoom Out", value++);
+    glutAddMenuEntry("+ Key - Zoom In", value++);
+    glutAddMenuEntry("V Key - Increase Wireframe Resolution", value++);
+    glutAddMenuEntry("C Key - Decrease Wireframe Resolution", value++);
 
     value = 1;
     glutCreateMenu(MainMenuHandler);
@@ -34,10 +41,8 @@ void createMenu()
     glutAddMenuEntry("Smooth Shadeing", value++);
     glutAddMenuEntry("Textures On", value++);
     glutAddMenuEntry("Textures Off", value++);
-    glutAddSubMenu("Planets", planetMenu);
     glutAddMenuEntry("Reset Camera", value++);
-    glutAddMenuEntry("Reset Solar System", value++);
-    glutAddMenuEntry("Help", value++);
+    glutAddSubMenu("Help", helpMenu);
     glutAddMenuEntry("Exit Program", value++);
 
     glutAttachMenu(GLUT_RIGHT_BUTTON);
@@ -86,21 +91,14 @@ void MainMenuHandler( int item )
 
         // Reset Camera
         case 7:
-            
-            break;
-
-        // Reset Solar System
-        case 8:
-            
-            break;
-
-        // Help
-        case 9:
-
+            for( int i = 0; i < 9; i++ )
+            {
+                lookat[i].value = lookat[i].reset;
+            }
             break;
 
         // Exit
-        case 10:
+        case 8:
             exit( 0 );
             break;
 
@@ -112,24 +110,12 @@ void MainMenuHandler( int item )
 }
 
  /************************************************************************
-   Function: PlanetMenuHandler
+   Function: HelpMenuHandler
    Author: Charles Bonn and Christian Sieh
-   Description: Handles the planet subment
+   Description: A submenu to show the keybindings used in the program
    Parameters:
 	int item - item being selected
  ************************************************************************/
-void PlanetMenuHandler( int item )
+void HelpMenuHandler( int item )
 {
-    switch ( item )
-    {
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-            cout << "you selected submenu item " << item << endl;
-            break;
-        default:    // should not occur
-            cout << "invalid submenu item " << item << endl;
-            break;
-    }
 }

@@ -116,10 +116,6 @@ void Planet::drawSolid(double day, double year) const
 {
     glDisable( GL_DEPTH_TEST );
 
-    // specify material reflectivity
-    //GLfloat mat_ambient[] = { 0.0, 1.0, 0.0, 1.0 };
-    //GLfloat mat_diffuse[] = { 1.0, 0.549019608, 0.0, 1.0 };
-    //GLfloat mat_specular[] = { 1.0, 0.0, 0.0, 1.0 };
     GLfloat mat_shininess = { 20.0 };
     
     glMaterialfv( GL_FRONT_AND_BACK, GL_AMBIENT, color );
